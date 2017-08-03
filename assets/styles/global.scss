@@ -1,0 +1,93 @@
+html {
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, STHeiti, 'WenQuanYi Micro Hei', SimSun, sans-serif;
+    color: #333;
+}
+
+// 文本溢出
+.text-overflow {
+    display: block;
+    width: auto;
+    word-break: keep-all;
+    /* 不换行 */
+    white-space: nowrap;
+    /* 不换行 */
+    word-wrap: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.multi-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+// 显示隐藏
+.hidden {
+    display: none;
+}
+
+// 清除浮动
+.clearfix {
+    *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+.clearfix:after {
+    clear: both;
+}
+
+// 各种margin padding
+$maxIndex: 30;
+$unit: 1px;
+@for $i from 0 through $maxIndex {
+    .pt#{$i} {
+        padding-top: $unit * $i;
+    }
+    .pr#{$i} {
+        padding-right: $unit * $i;
+    }
+    .pb#{$i} {
+        padding-bottom: $unit * $i;
+    }
+    .pl#{$i} {
+        padding-left: $unit * $i;
+    }
+    .ptb#{$i} {
+        padding: $unit * $i 0;
+    }
+    .plr#{$i} {
+        padding: auto $unit * $i;
+    }
+    .mt#{$i} {
+        margin-top: $unit * $i;
+    }
+    .mr#{$i} {
+        margin-right: $unit * $i;
+    }
+    .mb#{$i} {
+        margin-bottom: $unit * $i;
+    }
+    .ml#{$i} {
+        margin-left: $unit * $i;
+    }
+    .mtb#{$i} {
+        margin: $unit * $i 0;
+    }
+    .mlr#{$i} {
+        margin: auto $unit * $i;
+    }
+}
+
+// 水平对齐
+.line > *{
+    display: inline-block;
+    vertical-align: middle;
+}

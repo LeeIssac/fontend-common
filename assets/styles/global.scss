@@ -91,3 +91,24 @@ $unit: 1px;
     display: inline-block;
     vertical-align: middle;
 }
+
+// 超链接
+.link {
+    color: #007fff;
+    cursor: pointer;
+    &:hover {
+        color: #0371df;
+    }
+    &.checked {
+        color: #2121F7;
+    }
+    &.disable {
+        color: #999;
+        cursor: not-allowed;
+    }
+}
+
+// 隐藏
+.hidden {
+    display: none;
+}

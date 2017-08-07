@@ -19,6 +19,12 @@ export class HttpService {
         headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'})
     };
 
+    // post 请求默认参数
+    jsonOption: RequestOptionsArgs = {
+        responseType: 1,
+        headers: new Headers({'Content-Type': 'application/json; charset=UTF-8'})
+    };
+
     constructor(private http: Http) {}
 
     /**
@@ -40,6 +46,17 @@ export class HttpService {
      */
     post(url: string, body?: any, option?: RequestOptionsArgs): Observable<Response> {
         return this.http.post(this.getRealUrl(url), this.parseToURLSearchParams(body), option ? option : this.defaultOption);
+    }
+
+    /**
+     * post请求
+     * @param url
+     * @param body
+     * @param option
+     * @returns {Observable<Response>}
+     */
+    postByJSON(url: string, body?: any, option?: RequestOptionsArgs): Observable<Response> {
+        return this.http.post(this.getRealUrl(url), JSON.stringify(body), option ? option : this.jsonOption);
     }
 
     /**

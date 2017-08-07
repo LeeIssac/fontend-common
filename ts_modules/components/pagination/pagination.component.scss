@@ -1,0 +1,28 @@
+$borderColor: #D4D5DA;
+$checkedBackground: #4666C8;
+
+.pager {
+    padding: 20px;
+    ul {
+        border: 1px solid $borderColor;
+        float: right;
+        border-radius: 6px;
+        li {
+            float: left;
+            line-height: 32px;
+            padding: 0 15px;
+            border-left: 1px solid $borderColor;
+            cursor: pointer;
+            &.text {
+                padding: 0 20px;
+            }
+            &.total {
+                border-left: 0 none;
+                cursor: default;
+            }
+            &.cur {
+                background-color: $checkedBackground;
+            }
+        }
+    }
+}

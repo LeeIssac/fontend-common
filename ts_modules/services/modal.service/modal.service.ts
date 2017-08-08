@@ -49,7 +49,7 @@ export interface ModalOptions {
 export class ModalService {
 
     // 层级
-    private zIndex: number = 0;
+    private zIndex = 10;
 
     constructor(private applicationRef: ApplicationRef,
                 private componentFactoryResolver: ComponentFactoryResolver,
@@ -186,7 +186,8 @@ export class ModalService {
             <div class="app-modal-content {{ contentClass }}">
                 <div class="app-modal-content-title" *ngIf="showTitle">
                     <span class="title">{{ title }}</span>
-                    <span class="close" (click)="closeClick()"></span>
+                    <!--<span class="close" (click)="closeClick()"></span>-->
+                    <i class="fa fa-times close" (click)="closeClick()" aria-hidden="true"></i>
                 </div>
                 <div class="app-modal-content-inner">
                     <ng-template #content></ng-template>
@@ -213,8 +214,8 @@ export class ModalService {
             background: #fff;
             position: absolute;
             left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            top: 40%;
+            transform: translate(-40%, -50%);
             border-radius: 2px;
             overflow: auto;
             box-shadow: 3px 0 10px rgba(0,0,0,0.1),
@@ -233,9 +234,10 @@ export class ModalService {
             float: right;
             margin-right: 10px;
             margin-top: 10px;
-            background: url("./close.png");
+            /*background: url("./close.png");*/
             padding: 0 10px;
             height: 18px;
+            line-height: 18px;
             cursor: pointer;
         }
         .app-modal-content-inner {

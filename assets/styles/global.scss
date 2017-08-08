@@ -128,3 +128,39 @@ $unit: 1px;
 //    -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0) inset;
 //    transition: background-color 5000s ease-in-out 0s;
 //}
+
+/**
+    一组from表单样式 基本模板
+    <span class="input-container">
+        <input type="text" [class.error]="errorType===1" [(ngModel)]="dbName" placeholder="数据库名">
+        <span class="input-error" *ngIf="error">{{error}}</span>
+    </span>
+ */
+.input-container {
+    display: inline-block;
+    position: relative;
+
+    input[type="text"], input[type="password"], select, textarea {
+        border: 1px solid #93C2FC;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+    }
+    input[type="text"]:hover, input[type="password"], input[type="text"]:active, textarea:active {
+        border: 1px solid #89BCFC;
+    }
+    select {
+        width: 162px;
+    }
+
+    input.error {
+        border-color: #FA1515;
+    }
+    span.input-error {
+        display: inline-block;
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        color: #FA1515;
+    }
+}

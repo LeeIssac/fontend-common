@@ -1,0 +1,13 @@
+<div class="app-modal-container {{ containerClass }}" [@fadeInOut] *ngIf="isShow" #container>
+    <div class="app-modal-overlay {{ overlayClass }}" (click)="overlayClick()" *ngIf="backdrop!==false"></div>
+    <div class="app-modal-content {{ contentClass }}">
+        <div class="app-modal-content-title" *ngIf="showTitle">
+            <span class="title">{{ title }}</span>
+            <!--<span class="close" (click)="closeClick()"></span>-->
+            <i class="fa fa-times close" (click)="closeClick()" aria-hidden="true"></i>
+        </div>
+        <div class="app-modal-content-inner">
+            <ng-template #content></ng-template>
+        </div>
+    </div>
+</div>

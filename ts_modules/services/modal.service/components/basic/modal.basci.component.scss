@@ -1,0 +1,47 @@
+.app-modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    .app-modal-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.3;
+    }
+    .app-modal-content {
+        background: #fff;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-40%, -50%);
+        border-radius: 2px;
+        overflow: auto;
+        box-shadow: 3px 0 10px rgba(0,0,0,0.1),
+        -3px 0 10px rgba(0,0,0,0.1),
+        0 3px 10px rgba(0,0,0,0.1),
+        0 -3px 10px rgba(0,0,0,0.1);
+    }
+    .app-modal-content-title {
+        line-height: 35px;
+        background: #F4F4F4;
+    }
+    .app-modal-content-title .title {
+        margin-left: 10px;
+    }
+    .app-modal-content-title .close {
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+        padding: 0 10px;
+        height: 18px;
+        line-height: 18px;
+        cursor: pointer;
+    }
+    .app-modal-content-inner {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}

@@ -2,17 +2,12 @@
  * Created by LIHUA on 2017-08-03.
  */
 
-
-import {
-    AfterViewChecked, AfterViewInit,
-    ApplicationRef, ChangeDetectorRef, Component, ComponentFactoryResolver, Injectable, Injector, OnDestroy, Renderer2,
-    ViewChild,
-    ViewContainerRef
-} from '@angular/core';
-import {animate, style, trigger, transition} from '@angular/animations';
+import {ApplicationRef, ComponentFactoryResolver, Injectable, Injector} from '@angular/core';
+import {ModalAlertComponent} from "./components/alert/modal.alert.component";
+import {ModalBasicComponent} from "./components/basic/modal.basic.component";
+import {ModalConfrimComponent} from "./components/confrim/modal.confirm.component";
 
 export interface ModalOptions {
-
     /**
      * 给content容器增加class
      */
@@ -47,7 +42,6 @@ export interface ModalOptions {
 
 @Injectable()
 export class ModalService {
-
     // 层级
     private zIndex = 10;
 
@@ -64,11 +58,54 @@ export class ModalService {
     open(content: any, options: ModalOptions = {}) {
 
         // 初始化根组件
-        let [contentRef, modalComponentRef] = this.getModalComponentRef(options, ModalComponent);
+        let [contentRef, modalComponentRef] = this.getModalComponentRef(options, ModalBasicComponent);
 
         // 初始化内容组件
         return this.getContentInstance(content, contentRef, modalComponentRef, options);
     }
+
+    // open(content: any, options: ModalOptions = {}) {
+    //     let factory = this.componentFactoryResolver.resolveComponentFactory(ModalBasicComponent);
+    //
+    //     let newNode = document.createElement(factory.selector);
+    //     document.body.appendChild(newNode);
+    //
+    //     let ref = factory.create(this.injector, [], newNode);
+    //     let ins = ref.instance;
+    //     Object.assign(ins, options);
+    //
+    //     this.applicationRef.attachView(ref.hostView);
+    //     ref.changeDetectorRef.detectChanges();
+    //
+    //     // 这里调用Render2 的方法修改样式
+    //     ins['render'].setStyle(ins['containerRef']['element']['nativeElement'], 'z-index', this.zIndex);
+    //     this.zIndex++;
+    //
+    //     let contentRef = ins['contentRef'];
+    //     const contentFactory = this.componentFactoryResolver.resolveComponentFactory(content);
+    //     let contentComponent = contentRef.createComponent(contentFactory);
+    //     let contentInstance = contentComponent.instance;
+    //
+    //     // 绑定一个destroy给外部调用 删除模态组件
+    //     contentInstance['destroy'] = () => {
+    //         this.destroy(contentComponent, ref);
+    //     };
+    //
+    //     // 获取根组件实例
+    //     let modalComponentInstance = ref.instance;
+    //     // 给背景层增加点击事件
+    //     modalComponentInstance['overlayClick'] = () => {
+    //         options.backdrop !== false &&
+    //         options.backdrop !== 'static' &&
+    //         this.destroy(contentComponent, ref);
+    //     };
+    //     // 给关闭按钮增加点击事件
+    //     modalComponentInstance['closeClick'] = () => {
+    //         this.destroy(contentComponent, ref);
+    //     };
+    //
+    //     return contentInstance;
+    // }
 
     /**
      * 弹出提示pop
@@ -87,10 +124,17 @@ export class ModalService {
     //     }, time);
     // }
 
+    /**
+     * 弹出提示pop
+     * @param message 显示的消息
+     * @param time 保留时间，超过时间自动小时
+     */
     alert(message: string, time: number = 4000) {
         let factory = this.componentFactoryResolver.resolveComponentFactory(ModalAlertComponent);
         let newNode = document.createElement(factory.selector);
+
         document.body.appendChild(newNode);
+
         let ref = factory.create(this.injector, [], newNode);
         let ins = ref.instance;
         ins.message = message;
@@ -107,6 +151,23 @@ export class ModalService {
         }, time);
     }
 
+    /**
+     * 确认框
+     * @param message
+     * @param options
+     * @returns {C}
+     */
+    confrim(message: string, options: ModalOptions = {}) {
+        options.title = options.title || '提示';
+
+        let ins = this.open(ModalConfrimComponent, options);
+
+        Object.assign(ins, {
+            message: message
+        });
+
+        return ins;
+    }
 
     /**
      * 初始化根组件实例
@@ -176,177 +237,4 @@ export class ModalService {
         }, 200);
     }
 
-}
-
-@Component({
-    selector: 'app-modal-component',
-    template: `
-        <div class="app-modal-container {{ containerClass }}" [@fadeInOut] *ngIf="isShow" #container>
-            <div class="app-modal-overlay {{ overlayClass }}" (click)="overlayClick()" *ngIf="backdrop!==false"></div>
-            <div class="app-modal-content {{ contentClass }}">
-                <div class="app-modal-content-title" *ngIf="showTitle">
-                    <span class="title">{{ title }}</span>
-                    <!--<span class="close" (click)="closeClick()"></span>-->
-                    <i class="fa fa-times close" (click)="closeClick()" aria-hidden="true"></i>
-                </div>
-                <div class="app-modal-content-inner">
-                    <ng-template #content></ng-template>
-                </div>
-            </div>
-        </div>
-    `,
-    styles: [`
-        .app-modal-container {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            left: 0;
-            top: 0;
-        }
-        .app-modal-overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            opacity: 0.3;
-        }
-        .app-modal-content {
-            background: #fff;
-            position: absolute;
-            left: 50%;
-            top: 40%;
-            transform: translate(-40%, -50%);
-            border-radius: 2px;
-            overflow: auto;
-            box-shadow: 3px 0 10px rgba(0,0,0,0.1),
-            -3px 0 10px rgba(0,0,0,0.1),
-            0 3px 10px rgba(0,0,0,0.1),
-            0 -3px 10px rgba(0,0,0,0.1);
-        }
-        .app-modal-content-title {
-            line-height: 35px;
-            background: #F4F4F4;
-        }
-        .app-modal-content-title .title {
-            margin-left: 10px;
-        }
-        .app-modal-content-title .close {
-            float: right;
-            margin-right: 10px;
-            margin-top: 10px;
-            /*background: url("./close.png");*/
-            padding: 0 10px;
-            height: 18px;
-            line-height: 18px;
-            cursor: pointer;
-        }
-        .app-modal-content-inner {
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-    `],
-    animations: [
-        trigger('fadeInOut', [
-            transition('void => *', [
-                style({opacity: '0.3'}),
-                animate(50)
-            ]),
-            transition('* => void', [
-                animate(50, style({opacity: '0'}))
-            ])
-        ])
-    ]
-})
-export class ModalComponent {
-
-    // 控制动画显示
-    isShow: boolean = true;
-
-    // 是否显示背景 及 背景点击
-    backdrop: boolean | 'static';
-    // 额外传递的content class
-    contentClass: string;
-    // 额外传递的overlay class
-    overlayClass: string;
-    // 额外传递的container class
-    containerClass: string;
-
-    // 是否显示title
-    showTitle: boolean = true;
-    // 模态框title
-    title: string;
-
-    // 背景层点击
-    overlayClick() {
-
-    }
-    // 关闭按钮点击
-    closeClick() {
-
-    }
-
-    // 容器节点引用 动态改变z-index的时候需要
-    @ViewChild('container', {read: ViewContainerRef}) containerRef;
-    // 内容节点引用
-    @ViewChild('content', {read: ViewContainerRef}) contentRef;
-
-    constructor(private render: Renderer2) {
-
-    }
-
-}
-
-@Component({
-    selector: 'app-modal-alert-component',
-    template: `
-        <div class="app-modal-alert-container" #container [@slideInOut] *ngIf="isShow">
-            <div class="app-modal-alert-content">
-                <span>{{ message }}</span>
-            </div>
-        </div>
-    `,
-    styles: [`
-        .app-modal-alert-container {
-            position: absolute;
-            bottom: 10px;
-            max-width: 500px;
-            line-height: 40px;
-            background: rgba(0, 0, 0, 0.7);
-            text-align: center;
-            color: #fff;
-            left: 50%;
-            transform: translate(-50%, 0);
-            min-width: 200px;
-            z-index: 11;
-        }
-        .app-modal-alert-content {
-            padding: 0 10px;
-        }
-    `],
-    animations: [
-        trigger('slideInOut', [
-            transition('void => *', [
-                style({transform: 'translate(-50%, 100%)'}),
-                animate(100)
-            ]),
-            transition('* => void', [
-                animate(100, style({transform: 'translate(-50%, 100%)'}))
-            ])
-        ])
-    ]
-})
-export class ModalAlertComponent {
-    // 控制动画显示
-    isShow: boolean;
-
-    // 显示的消息内容
-    message: string;
-
-    // 消失毫秒数
-    time: number;
-
-    // 容器节点引用 动态改变z-index的时候需要
-    @ViewChild('container', {read: ViewContainerRef}) containerRef;
-
-    constructor() {}
 }

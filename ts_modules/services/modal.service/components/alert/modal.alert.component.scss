@@ -1,0 +1,16 @@
+.app-modal-alert-container {
+    position: absolute;
+    bottom: 10px;
+    max-width: 500px;
+    line-height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    color: #fff;
+    left: 50%;
+    transform: translate(-50%, 0);
+    min-width: 200px;
+    z-index: 11;
+    .app-modal-alert-content {
+        padding: 0 10px;
+    }
+}

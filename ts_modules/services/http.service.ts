@@ -13,16 +13,19 @@ export class HttpService {
     // 基本服务器地址
     serverUrl = '';
 
+    // http token
+    token: string;
+
     // post 请求默认参数
     defaultOption: RequestOptionsArgs = {
         responseType: 1,
-        headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'})
+        headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Token': this.token })
     };
 
     // post 请求默认参数
     jsonOption: RequestOptionsArgs = {
         responseType: 1,
-        headers: new Headers({'Content-Type': 'application/json; charset=UTF-8'})
+        headers: new Headers({'Content-Type': 'application/json; charset=UTF-8', 'Token': this.token})
     };
 
     constructor(private http: Http) {}
@@ -56,7 +59,11 @@ export class HttpService {
      * @returns {Observable<Response>}
      */
     postByJSON(url: string, body?: any, option?: RequestOptionsArgs): Observable<Response> {
-        return this.http.post(this.getRealUrl(url), JSON.stringify(body), option ? option : this.jsonOption);
+        let jsonOption: RequestOptionsArgs = {
+            responseType: 1,
+            headers: new Headers({'Content-Type': 'application/json; charset=UTF-8', 'Token': this.token})
+        };
+        return this.http.post(this.getRealUrl(url), JSON.stringify(body), option ? option : jsonOption);
     }
 
     /**

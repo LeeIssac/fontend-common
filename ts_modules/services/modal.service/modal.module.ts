@@ -4,12 +4,16 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ModalAlertComponent, ModalComponent, ModalService} from "./modal.service";
+
+import {ModalService} from "./modal.service";
+import {ModalAlertComponent} from "./components/alert/modal.alert.component";
+import {ModalBasicComponent} from "./components/basic/modal.basic.component";
+import {ModalConfrimComponent} from "./components/confrim/modal.confirm.component";
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [ModalComponent, ModalAlertComponent],
+    declarations: [ModalAlertComponent, ModalBasicComponent, ModalConfrimComponent],
     providers: [ModalService],
-    entryComponents: [ModalComponent, ModalAlertComponent]
+    entryComponents: [ModalAlertComponent, ModalBasicComponent, ModalConfrimComponent]
 })
 export class ModalModule {}

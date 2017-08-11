@@ -16,6 +16,9 @@ export class HttpService {
     // http token
     token: string;
 
+
+
+
     // post 请求默认参数
     defaultOption: RequestOptionsArgs = {
         responseType: 1,

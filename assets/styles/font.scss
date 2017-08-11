@@ -2,14 +2,15 @@
     图标库是UI设计放到阿里矢量图库的
     font-awesome 被弃用
  */
-@font-face {
-    font-family: 'iconfont';  /* project id 378528 */
-    src: url('//at.alicdn.com/t/font_378528_bvajav6ximbr19k9.eot');
-    src: url('//at.alicdn.com/t/font_378528_bvajav6ximbr19k9.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_378528_bvajav6ximbr19k9.woff') format('woff'),
-    url('//at.alicdn.com/t/font_378528_bvajav6ximbr19k9.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_378528_bvajav6ximbr19k9.svg#iconfont') format('svg');
+
+@font-face {font-family: "iconfont";
+    src: url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.eot?t=1502431537635'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.eot?t=1502431537635#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.woff?t=1502431537635') format('woff'), /* chrome, firefox */
+    url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.ttf?t=1502431537635') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.svg?t=1502431537635#iconfont') format('svg'); /* iOS 4.1- */
 }
+
 .iconfont {
     font-family:"iconfont" !important;
     font-size:16px;
@@ -46,8 +47,6 @@
 
 .daorurenwu:before { content: "\e61d"; }
 
-.bianji:before { content: "\e61e"; }
-
 .mima:before { content: "\e61f"; }
 
 .cebianlan:before { content: "\e620"; }
@@ -83,3 +82,7 @@
 .caijishujupeizhi:before { content: "\e62f"; }
 
 .caijiliuchengpeizhizhongxin:before { content: "\e630"; }
+
+.shanchu1:before { content: "\e631"; }
+
+.bianji1:before { content: "\e632"; }

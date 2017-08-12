@@ -1,0 +1,11 @@
+<div>
+    <div>
+        <span></span>
+        <i class="iconfont">&#xe613;</i>
+    </div>
+    <div>
+        <ul>
+            <li *ngFor="let option of options" (click)="optionClick(option)"><span>{{option[label]}}</span></li>
+        </ul>
+    </div>
+</div>

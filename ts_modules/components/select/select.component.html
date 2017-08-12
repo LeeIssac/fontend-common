@@ -1,11 +1,19 @@
-<div>
-    <div>
-        <span></span>
-        <i class="iconfont">&#xe613;</i>
+<div class="container">
+    <div class="top clearfix"
+         [class.showDown]="showDown"
+         (click)="toggleShowDown($event)">
+        <span>{{option&&option[label]}}</span>
+        <i class="iconfont" >&#xe613;</i>
     </div>
-    <div>
-        <ul>
-            <li *ngFor="let option of options" (click)="optionClick(option)"><span>{{option[label]}}</span></li>
-        </ul>
+    <div class="down" *ngIf="showDown" [@slideUpDwon]>
+        <div>
+            <ul>
+                <li *ngFor="let op of options"
+                    (click)="optionClick(op, $event)"
+                    [class.checked]="option===op">
+                    <span>{{op[label]}}</span>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

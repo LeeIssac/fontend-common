@@ -1,0 +1,40 @@
+$borderColor: #999;
+
+.container {
+    width: 200px;
+    border: 1px solid $borderColor;
+    line-height: 20px;
+    .top {
+        padding: 3px;
+        &.showDown {
+            border-bottom: 1px solid $borderColor;
+            .iconfont {
+                transform: rotate(180deg);
+            }
+        }
+        .iconfont {
+            float: right;
+            margin-right: 5px;
+            transition: all 0.2s ease;
+            font-size: 12px;
+        }
+    }
+    .down {
+        max-height: 300px;
+        overflow: hidden;
+        > div {
+            overflow-y: auto;
+            max-height: 300px;
+        }
+        li {
+            padding: 3px;
+            transition: all 0.2s ease;
+            &:hover {
+                background: #888;
+            }
+            &.checked {
+                background: #666;
+            }
+        }
+    }
+}

@@ -1,88 +1,84 @@
-/**
-    图标库是UI设计放到阿里矢量图库的
-    font-awesome 被弃用
- */
 
 @font-face {font-family: "iconfont";
-    src: url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.eot?t=1502431537635'); /* IE9*/
-    src: url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.eot?t=1502431537635#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.woff?t=1502431537635') format('woff'), /* chrome, firefox */
-    url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.ttf?t=1502431537635') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-    url('//at.alicdn.com/t/font_378528_tqnmm9mnv4klz0k9.svg?t=1502431537635#iconfont') format('svg'); /* iOS 4.1- */
+    src: url('//at.alicdn.com/t/font_384335_d1o90arpn4okcsor.eot?t=1502701636210'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_384335_d1o90arpn4okcsor.eot?t=1502701636210#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_384335_d1o90arpn4okcsor.woff?t=1502701636210') format('woff'), /* chrome, firefox */
+    url('//at.alicdn.com/t/font_384335_d1o90arpn4okcsor.ttf?t=1502701636210') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_384335_d1o90arpn4okcsor.svg?t=1502701636210#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
     font-family:"iconfont" !important;
-    font-size:16px;
+    font-size:14px;
     font-style:normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.tianjia:before { content: "\e610"; }
+.icon-yinpinbofang:before { content: "\e62a"; }
 
-.zhishiku:before { content: "\e611"; }
+.icon-guanbi:before { content: "\e62b"; }
 
-.shenpiguanli:before { content: "\e612"; }
+.icon-xiangpica:before { content: "\e62c"; }
 
-.xiala:before { content: "\e613"; }
+.icon-mima:before { content: "\e62d"; }
 
-.yonghu:before { content: "\e614"; }
+.icon-bianji:before { content: "\e62e"; }
 
-.xinxichakan:before { content: "\e615"; }
+.icon-xiala:before { content: "\e62f"; }
 
-.xitongguanli:before { content: "\e616"; }
+.icon-xinxichakan:before { content: "\e630"; }
 
-.sousuo:before { content: "\e617"; }
+.icon-leixing:before { content: "\e631"; }
 
-.shujugongxiang:before { content: "\e618"; }
+.icon-laiyuan:before { content: "\e632"; }
 
-.shuaxin:before { content: "\e619"; }
+.icon-danxuankuangxuanzhong:before { content: "\e633"; }
 
-.shujuchuangkuguanli:before { content: "\e61a"; }
+.icon-daorurenwu:before { content: "\e634"; }
 
-.shanchu:before { content: "\e61b"; }
+.icon-chuangjian:before { content: "\e635"; }
 
-.chuangjianrenwuji:before { content: "\e61c"; }
+.icon-cebianlan:before { content: "\e636"; }
 
-.daorurenwu:before { content: "\e61d"; }
+.icon-chuangjianrenwuji:before { content: "\e637"; }
 
-.mima:before { content: "\e61f"; }
+.icon-shouye:before { content: "\e638"; }
 
-.cebianlan:before { content: "\e620"; }
+.icon-qudao:before { content: "\e639"; }
 
-.shouye:before { content: "\e621"; }
+.icon-shujugongxiang:before { content: "\e63a"; }
 
-.tiaodurenwuguanli:before { content: "\e622"; }
+.icon-shujuchuangkuguanli:before { content: "\e63b"; }
 
-.qudao:before { content: "\e623"; }
+.icon-caijishujupeizhi:before { content: "\e63c"; }
 
-.youjian:before { content: "\e624"; }
+.icon-sousuo:before { content: "\e63d"; }
 
-.leixing:before { content: "\e625"; }
+.icon-shujuliebiao:before { content: "\e63e"; }
 
-.shujuliebiao:before { content: "\e627"; }
+.icon-shuaxin:before { content: "\e63f"; }
 
-.zyt-yinpinbofang:before { content: "\e628"; }
+.icon-tianjia:before { content: "\e640"; }
 
-.x_xiangpica:before { content: "\e629"; }
+.icon-yonghu:before { content: "\e641"; }
 
-.yuyan:before { content: "\e62a"; }
+.icon-youjian:before { content: "\e642"; }
 
-.danxuankuangxuanzhong:before { content: "\e62b"; }
+.icon-yuyan:before { content: "\e643"; }
 
-.xuanze:before { content: "\e62c"; }
+.icon-zhishiku:before { content: "\e644"; }
 
-.laiyuan:before { content: "\e62d"; }
+.icon-shijian:before { content: "\e645"; }
 
-.shijian:before { content: "\e626"; }
+.icon-tiaodurenwuguanli:before { content: "\e646"; }
 
-.chuangjian:before { content: "\e62e"; }
+.icon-shanchu:before { content: "\e647"; }
 
-.caijishujupeizhi:before { content: "\e62f"; }
+.icon-shenpiguanli:before { content: "\e648"; }
 
-.caijiliuchengpeizhizhongxin:before { content: "\e630"; }
+.icon-bofang:before { content: "\e649"; }
 
-.shanchu1:before { content: "\e631"; }
+.icon-xitongguanli:before { content: "\e64a"; }
 
-.bianji1:before { content: "\e632"; }
+.icon-caijiliuchengpeizhizhongxin:before { content: "\e64b"; }

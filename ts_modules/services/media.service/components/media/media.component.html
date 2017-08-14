@@ -1,0 +1,19 @@
+<div class="app-modal-container">
+    <div class="app-modal-overlay"></div>
+    <div class="app-modal-content">
+        <div class="img-container" *ngIf="type==='image'">
+            <img [src]="src">
+        </div>
+        <div class="img-container" *ngIf="type==='video'">
+            <video controls>
+                <source [src]="src">
+            </video>
+        </div>
+        <div class="img-container" *ngIf="type==='audio'">
+            <audio [src]="src" controls></audio>
+        </div>
+        <span class="close" (click)="closeClick()">
+            <i class="iconfont">&#xe631;</i>
+        </span>
+    </div>
+</div>

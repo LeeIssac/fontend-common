@@ -12,6 +12,7 @@ import {DatePipe} from "./pipe/date.pipe";
 import {HttpService} from "./services/http.service";
 import {ModalModule} from "./services/modal.service/modal.module";
 import {MediaModule} from "./services/media.service/media.module";
+import {TooltipDirective} from "./directives/tooltip/tooltip.directive";
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import {MediaModule} from "./services/media.service/media.module";
         PaginationComponent,
         SelectComponent,
         DatePipe,
+        TooltipDirective
     ],
     providers: [
         HttpService
@@ -31,6 +33,7 @@ import {MediaModule} from "./services/media.service/media.module";
         PaginationComponent,
         SelectComponent,
         DatePipe,
+        TooltipDirective
     ]
 })
 export class TsModule {

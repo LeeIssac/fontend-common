@@ -4,6 +4,8 @@
  */
 
 import {Directive, ElementRef, OnInit, Renderer2} from "@angular/core";
+import {fadeIn} from "../../animations/sim-anim";
+
 
 @Directive({
     selector: '[tooltip]'
@@ -46,8 +48,9 @@ export class TooltipDirective implements OnInit {
 
     createTip() {
         this.ele = document.createElement('div');
-        this.ele.className = 'tooltip-container' + this.position;
+        this.ele.className = 'tooltip-container ' + this.position;
         this.ele.innerHTML = this.element.nativeElement.getAttribute('tooltip');
+
 
         let left, top;
         if (this.position === 'bottom') {

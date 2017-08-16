@@ -1,5 +1,16 @@
 $backgroundColor: rgba(0, 0, 0, .5);
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity:0.5; /*中间状态 透明度为0*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
 .tooltip-container {
     display: inline-block;
     background: $backgroundColor;
@@ -7,6 +18,10 @@ $backgroundColor: rgba(0, 0, 0, .5);
     border-radius: 3px;
     padding: 5px 15px;
     position: absolute;
+    animation-name: fadeIn; /*动画名称*/
+    animation-duration: 0.3s; /*动画持续时间*/
+    animation-iteration-count: 1; /*动画次数*/
+    animation-delay: 0s; /*延迟时间*/
     &:after {
         content: '';
         width: 0;

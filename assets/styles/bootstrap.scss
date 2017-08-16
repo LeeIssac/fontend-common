@@ -2,10 +2,7 @@
  * 基础的btn text grid 样式
  */
 
-$borderColor: #CBCBCB;
-$backgroundColor: #108ee9;
-$borderRradius: 3px;
-$transitionAll: all .3s cubic-bezier(.645, .045, .355, 1);
+@import "./variable";
 
 .btn {
     outline: 0;

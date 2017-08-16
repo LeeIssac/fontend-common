@@ -1,6 +1,6 @@
-$borderColor: #D4D5DA;
-$checkedBackground: #4666C8;
-
+//$borderColor: #D4D5DA;
+//$checkedBackground: #4666C8;
+@import "../../../assets/styles/variable.scss";
 .pager {
     padding: 20px;
     ul {
@@ -21,8 +21,15 @@ $checkedBackground: #4666C8;
                 cursor: default;
             }
             &.cur {
-                background-color: $checkedBackground;
+                background-color: $backgroundColor;
             }
+            &:hover {
+                background-color: $backgroundColor;
+            }
+            &:first-child:hover {
+                background: none;
+            }
+
         }
     }
 }

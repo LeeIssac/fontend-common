@@ -26,6 +26,7 @@ $backgroundColor: rgba(0, 0, 0, .5);
     animation-duration: .3s; /*动画持续时间*/
     animation-iteration-count: 1; /*动画次数*/
     animation-delay: 0s; /*延迟时间*/
+    z-index: 100;
     &:after {
         content: '';
         width: 0;

@@ -3,32 +3,41 @@
  * tooltip 文字提示
  */
 
-import {Directive, ElementRef, OnInit, Renderer2} from "@angular/core";
-import {fadeIn} from "../../animations/sim-anim";
-
+import {Directive, ElementRef, Input, OnInit, Renderer2} from "@angular/core";
 
 @Directive({
     selector: '[tooltip]'
 })
 export class TooltipDirective implements OnInit {
 
-    position: any;
+    @Input()
+    tooltip: string;
+
+    @Input()
+    tooltipShow: boolean;
+
+    @Input()
+    tooltipPosition: string;
 
     size: any;
 
     ele: any;
 
-    constructor(private element: ElementRef,
-                private render: Renderer2) {
-    }
+    constructor(private element: ElementRef, private render: Renderer2) {}
 
     ngOnInit() {
-        this.position = this.element.nativeElement.getAttribute('position') || 'bottom';
+        this.tooltipPosition = this.tooltipPosition || 'bottom';
 
         this.render.listen(this.element.nativeElement, 'mouseenter', () => {
-            this.size = this.getSize();
-            this.createTip();
-            console.log(this.size);
+            if (this.tooltipShow !== undefined) {
+                if (this.tooltipShow) {
+                    this.size = this.getSize();
+                    this.createTip();
+                }
+            } else {
+                this.size = this.getSize();
+                this.createTip();
+            }
         });
 
         this.render.listen(this.element.nativeElement, 'mouseleave', () => {
@@ -40,20 +49,37 @@ export class TooltipDirective implements OnInit {
         let size = {};
         size['offsetWidth'] = this.element.nativeElement.offsetWidth;
         size['offsetHeight'] = this.element.nativeElement.offsetHeight;
-        size['offsetTop'] = this.element.nativeElement.offsetTop;
-        size['offsetLeft'] = this.element.nativeElement.offsetLeft;
+        let offset = this.getOffset(this.element.nativeElement);
+        size['offsetTop'] = offset.top;
+        size['offsetLeft'] = offset.left;
 
         return size;
     }
 
+    getOffset(el) {
+        let _x = 0,
+            _y = 0;
+        while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+            _x += el.offsetLeft - el.scrollLeft;
+            _y += el.offsetTop - el.scrollTop;
+            el = el.offsetParent;
+        }
+
+        // 滚动高度
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        return { top: _y + scrollTop, left: _x };
+    }
+
     createTip() {
         this.ele = document.createElement('div');
-        this.ele.className = 'tooltip-container ' + this.position;
-        this.ele.innerHTML = this.element.nativeElement.getAttribute('tooltip');
+        this.ele.className = 'tooltip-container ' + this.tooltipPosition;
+        // this.ele.innerHTML = this.element.nativeElement.getAttribute('tooltip');
+        this.ele.innerHTML = this.tooltip;
 
 
         let left, top;
-        if (this.position === 'bottom') {
+        if (this.tooltipPosition === 'bottom') {
             left = this.size['offsetLeft'] + this.size['offsetWidth'] / 2;
             this.ele.style.left = left + 'px';
             this.ele.style.transform = 'translateX(-50%)';
@@ -61,7 +87,7 @@ export class TooltipDirective implements OnInit {
             top = this.size['offsetTop'] + this.size['offsetHeight'] + 10;
             this.ele.style.top = top + 'px';
         }
-        if (this.position === 'top') {
+        if (this.tooltipPosition === 'top') {
             left = this.size['offsetLeft'] + this.size['offsetWidth'] / 2;
             this.ele.style.left = left + 'px';
 
@@ -70,7 +96,7 @@ export class TooltipDirective implements OnInit {
 
             this.ele.style.transform = 'translate(-50%, -100%)';
         }
-        if (this.position === 'right') {
+        if (this.tooltipPosition === 'right') {
             left = this.size['offsetLeft'] + this.size['offsetWidth'] + 10;
             this.ele.style.left = left + 'px';
 
@@ -79,7 +105,7 @@ export class TooltipDirective implements OnInit {
 
             this.ele.style.transform = 'translateY(-50%)';
         }
-        if (this.position === 'left') {
+        if (this.tooltipPosition === 'left') {
             left = this.size['offsetLeft'] - 10;
             this.ele.style.left = left + 'px';
 
@@ -93,6 +119,9 @@ export class TooltipDirective implements OnInit {
     }
 
     removeTip() {
-        document.body.removeChild(this.ele);
+        if (this.ele) {
+            document.body.removeChild(this.ele);
+            this.ele = null;
+        }
     }
 }

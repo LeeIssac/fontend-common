@@ -1,0 +1,431 @@
+/*
+ * 基础的btn text grid 样式
+ */
+
+$borderColor: #CBCBCB;
+$backgroundColor: #108ee9;
+$borderRradius: 3px;
+$transitionAll: all .3s cubic-bezier(.645, .045, .355, 1);
+
+.btn {
+    outline: 0;
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1.15;
+    padding: 0 15px;
+    font-size: 12px;
+    border-radius: $borderRradius;
+    height: 28px;
+    user-select: none;
+    transition: $transitionAll;
+    position: relative;
+    border: 1px solid $borderColor;
+    background: #fff;
+    color: rgba(0, 0, 0, .65);
+    &:hover {
+        border-color: $backgroundColor;
+        color: $backgroundColor;
+    }
+    &.primary {
+        color: #fff;
+        border: 1px solid $backgroundColor;
+        background-color: $backgroundColor;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    &.disabled {
+        color: rgba(0, 0, 0, .25);
+        background-color: #f7f7f7;
+        border-color: $borderColor;
+        cursor: not-allowed;
+        .fa, .iconfont {
+            color: rgba(0, 0, 0, .25) !important;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    &.icon {
+        &:hover {
+            .fa, .iconfont {
+                color: $backgroundColor;
+            }
+        }
+        &.only {
+            padding: 0;
+            border-radius: 50%;
+            width: 28px;
+            .fa, .iconfont {
+                margin-right: 0;
+            }
+        }
+        .fa, .iconfont {
+            font-size: 14px;
+            margin-right: 2px;
+            color: rgba(0, 0, 0, .45);
+            transition: $transitionAll;
+        }
+    }
+    &[size='large'] {
+        padding: 0 15px;
+        font-size: 14px;
+        height: 32px;
+        &.icon {
+            &.only {
+                width: 32px;
+            }
+            .fa, .iconfont {
+                font-size: 16px;
+            }
+        }
+    }
+    &[size='small'] {
+        padding: 0 7px;
+        font-size: 12px;
+        height: 22px;
+        &.icon {
+            &.only {
+                width: 22px;
+            }
+            .fa, .iconfont {
+                font-size: 12px;
+            }
+        }
+    }
+}
+.btn-group {
+    display: inline-block;
+    font-size: 0; // 消除两个相邻button的间隙
+    .btn {
+        border-left: 1px solid transparent;
+        margin-right: 0;
+        border-radius: 0;
+        &:hover {
+            border-color: $backgroundColor;
+        }
+        &:first-child {
+            border-left: 1px solid $borderColor;
+            border-top-left-radius: $borderRradius;
+            border-bottom-left-radius: $borderRradius;
+            &:hover {
+                border-color: $backgroundColor;
+            }
+            &:not(:last-child) {
+                padding-left: 20px;
+            }
+        }
+        &:last-child {
+            border-top-right-radius: $borderRradius;
+            border-bottom-right-radius: $borderRradius;
+            &:hover {
+                border-color: $backgroundColor;
+            }
+            &:not(:first-child) {
+                padding-right: 20px;
+            }
+        }
+    }
+}
+
+.input {
+    position: relative;
+    display: inline-block;
+    padding: 4px 7px;
+    width: 200px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, .65);
+    border: 1px solid $borderColor;
+    border-radius: $borderRradius;
+    transition: $transitionAll;
+    &::-moz-placeholder {
+        color: rgba(0, 0, 0, .45);
+        opacity: 1
+    }
+    &:-ms-input-placeholder {
+        color: rgba(0, 0, 0, .45);
+    }
+    &::-webkit-input-placeholder {
+        color: rgba(0, 0, 0, .45);
+    }
+    &:focus, &:hover {
+        border-color: #49a9ee;
+    }
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px rgba(16, 142, 233, .2);
+    }
+    &[size='large'] {
+        height: 22px;
+    }
+    &[size='small'] {
+        height: 12px;
+    }
+}
+textarea.input {
+    height: auto;
+    max-width: 100%;
+}
+.input-icon {
+    display: inline-block;
+    position: relative;
+    &[position='left'] {
+        .input {
+            padding-left: 30px;
+        }
+        .fa, .iconfont {
+            left: 10px;
+        }
+    }
+    &[position='right'] {
+        .input {
+            padding-right: 30px;
+        }
+        .fa, .iconfont {
+            right: 10px;
+        }
+    }
+    .fa, .iconfont {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.65);
+        transition: $transitionAll;
+    }
+    &:hover {
+        .fa, .iconfont {
+            color: $backgroundColor;
+        }
+    }
+}
+
+.checkbox {
+    position: relative;
+    cursor: pointer;
+    input[type='checkbox']{
+        display: none;
+    }
+    input[type='checkbox'] + label {
+        border: 1px solid $borderColor;
+        padding: 8px;
+        border-radius: 3px;
+        display: inline-block;
+        position: relative;
+    }
+    input[type='checkbox']:checked + label {
+        border: 1px solid $backgroundColor;
+        color: $backgroundColor;
+    }
+    input[type='checkbox'] + label:after {
+        content: '\2714';
+        font-size: 14px;
+        position: absolute;
+        top: -2px;
+        left: 3px;
+        color: $backgroundColor;
+        opacity: 0;
+        transition: $transitionAll;
+    }
+    input[type='checkbox']:checked + label:after {
+        opacity: 1;
+    }
+}
+
+.radio {
+    position: relative;
+    cursor: pointer;
+    input[type='radio'] {
+        display: none;
+    }
+    input[type='radio'] + label {
+        -webkit-appearance: none;
+        border: 1px solid $borderColor;
+        padding: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        transition: $transitionAll;
+    }
+    input[type='radio']:checked + label {
+        border: 1px solid $backgroundColor;
+    }
+    input[type='radio'] + label:after {
+        content: ' ';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        position: absolute;
+        background: $backgroundColor;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, .3);
+        text-shadow: none;
+        font-size: 32px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: $transitionAll;
+        opacity: 0;
+    }
+    input[type='radio']:checked + label:after {
+        opacity: 1;
+    }
+}
+
+// 栅格行
+.row {
+    position: relative;
+    height: auto;
+    zoom: 1;
+    display: block;
+    &:after, &:before {
+        content: ' ';
+        display: table;
+    }
+    &:after {
+        clear: both;
+        visibility: hidden;
+        font-size: 0;
+        height: 0;
+    }
+    // 间隔
+    &.gutter {
+        margin-left: -4px;
+        margin-right: -4px;
+        .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+    }
+    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+        float: left;
+        position: relative;
+        flex: 0 0 auto;
+    }
+    .col-1 {
+        width: 8.333333333%;
+    }
+    .col-2 {
+        width: 16.66666667%;
+    }
+    .col-3 {
+        width: 25%;
+    }
+    .col-4 {
+        width: 33.33333333%;
+    }
+    .col-5 {
+        width: 41.66666667%;
+    }
+    .col-6 {
+        width: 50%;
+    }
+    .col-7 {
+        width: 58.33333333%;
+    }
+    .col-8 {
+        width: 66.66666667%;
+    }
+    .col-9 {
+        width:75%;
+    }
+    .col-10 {
+        width:83.33333333%;
+    }
+    .col-11 {
+        width:91.66666667%;
+    }
+    .col-12 {
+        width:100%;
+    }
+    // push 定位(左边开始)
+    .col-push-1 {
+        left: 8.333333333%;
+    }
+    .col-push-2 {
+        left: 16.66666667%;
+    }
+    .col-push-3 {
+        left: 25%;
+    }
+    .col-push-4 {
+        left: 33.33333333%;
+    }
+    .col-push-5 {
+        left: 41.66666667%;
+    }
+    .col-push-6 {
+        left: 50%;
+    }
+    .col-push-7 {
+        left: 58.33333333%;
+    }
+    .col-push-8 {
+        left: 66.66666667%;
+    }
+    .col-push-9 {
+        left: 75%;
+    }
+    .col-push-10 {
+        left: 83.33333333%;
+    }
+    .col-push-11 {
+        left: 91.66666667%;
+    }
+    .col-push-12 {
+        left: 100%;
+    }
+    // 栅格左侧的间隔格数 间隔内不可以有栅格
+    .offset-1 {
+        margin-left: 8.333333333%;
+    }
+    .offset-2 {
+        margin-left: 16.66666667%;
+    }
+    .offset-3 {
+        margin-left: 25%;
+    }
+    .offset-4 {
+        margin-left: 33.33333333%;
+    }
+    .offset-5 {
+        margin-left: 41.66666667%;
+    }
+    .offset-6 {
+        margin-left: 50%;
+    }
+    .offset-7 {
+        margin-left: 58.33333333%;
+    }
+    .offset-8 {
+        margin-left: 66.66666667%;
+    }
+    .offset-9 {
+        margin-left:75%;
+    }
+    .offset-10 {
+        margin-left:83.33333333%;
+    }
+    .offset-11 {
+        margin-left:91.66666667%;
+    }
+}
+
+.rowstyle {
+    > div {
+        text-align: center;
+        color: #fff;
+        &:nth-child(odd) {
+            background: #4CBCF0;
+        }
+        &:nth-child(even) {
+            background: #00A0E9;
+        }
+    }
+}

@@ -13,6 +13,7 @@ import {HttpService} from "./services/http.service";
 import {ModalModule} from "./services/modal.service/modal.module";
 import {MediaModule} from "./services/media.service/media.module";
 import {TooltipDirective} from "./directives/tooltip/tooltip.directive";
+import {ShowDirective} from "./directives/show/show.directive";
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import {TooltipDirective} from "./directives/tooltip/tooltip.directive";
         PaginationComponent,
         SelectComponent,
         DatePipe,
-        TooltipDirective
+        TooltipDirective,
+        ShowDirective
     ],
     providers: [
         HttpService
@@ -33,7 +35,8 @@ import {TooltipDirective} from "./directives/tooltip/tooltip.directive";
         PaginationComponent,
         SelectComponent,
         DatePipe,
-        TooltipDirective
+        TooltipDirective,
+        ShowDirective
     ]
 })
 export class TsModule {

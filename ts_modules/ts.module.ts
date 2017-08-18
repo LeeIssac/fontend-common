@@ -14,6 +14,7 @@ import {ModalModule} from "./services/modal.service/modal.module";
 import {MediaModule} from "./services/media.service/media.module";
 import {TooltipDirective} from "./directives/tooltip/tooltip.directive";
 import {ShowDirective} from "./directives/show/show.directive";
+import {ToolService} from "./services/tool.service";
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import {ShowDirective} from "./directives/show/show.directive";
         ShowDirective
     ],
     providers: [
-        HttpService
+        HttpService,
+        ToolService
     ],
     exports: [
         PaginationComponent,

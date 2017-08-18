@@ -1,35 +1,40 @@
-//$borderColor: #D4D5DA;
-//$checkedBackground: #4666C8;
 @import "../../../assets/styles/variable.scss";
+
 .pager {
     padding: 20px;
     ul {
-        border: 1px solid $borderColor;
         float: right;
-        border-radius: 6px;
         li {
             float: left;
             line-height: 32px;
             padding: 0 15px;
-            border-left: 1px solid $borderColor;
             cursor: pointer;
+            position: relative;
+            border: 1px solid $borderColor;
+            border-left: 0;
+            &:first-child {
+                border-left: 1px solid $borderColor;
+                cursor: default;
+                border-top-left-radius: 6px;
+                border-bottom-left-radius: 6px;
+                &:hover {
+                    background: none;
+                    color: #333;
+                    border-color: $borderColor;
+                }
+            }
+            &:last-child {
+                border-top-right-radius: 6px;
+                border-bottom-right-radius: 6px;
+            }
             &.text {
                 padding: 0 20px;
             }
-            &.total {
-                border-left: 0 none;
-                cursor: default;
-            }
-            &.cur {
+            &.cur, &:hover {
                 background-color: $backgroundColor;
+                color: #fff;
+                border-color: $backgroundColor;
             }
-            &:hover {
-                background-color: $backgroundColor;
-            }
-            &:first-child:hover {
-                background: none;
-            }
-
         }
     }
 }

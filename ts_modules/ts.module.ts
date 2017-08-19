@@ -15,12 +15,14 @@ import {MediaModule} from "./services/media.service/media.module";
 import {TooltipDirective} from "./directives/tooltip/tooltip.directive";
 import {ShowDirective} from "./directives/show/show.directive";
 import {ToolService} from "./services/tool.service";
+import {LoadingModule} from "./services/loading.service/loading.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ModalModule,
         MediaModule,
+        LoadingModule
     ],
     declarations: [
         PaginationComponent,

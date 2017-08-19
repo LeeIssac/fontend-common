@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 // 动画时间线
-const time = '3000ms';
+const time = '600ms';
 const styles = {
     ease: time + ' ease ',
     linear: time + ' linear ',

@@ -1,3 +1,5 @@
+@import '../../../../../assets/styles/variable';
+
 .app-modal-container {
     width: 100%;
     height: 100%;
@@ -8,8 +10,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #000;
-        opacity: 0.3;
+        background: rgba(55, 55, 55,.65);
     }
     .app-modal-content {
         background: #fff;
@@ -19,14 +20,12 @@
         transform: translate(-40%, -50%);
         border-radius: 2px;
         overflow: auto;
-        box-shadow: 3px 0 10px rgba(0,0,0,0.1),
-        -3px 0 10px rgba(0,0,0,0.1),
-        0 3px 10px rgba(0,0,0,0.1),
-        0 -3px 10px rgba(0,0,0,0.1);
     }
     .app-modal-content-title {
         line-height: 35px;
-        background: #F4F4F4;
+        border-bottom: 1px solid $borderColor;
+        padding: 5px 0;
+        font-size: 13px;
     }
     .app-modal-content-title .title {
         margin-left: 10px;
@@ -39,6 +38,11 @@
         height: 18px;
         line-height: 18px;
         cursor: pointer;
+        font-size: 12px;
+        transition: $transitionAll;
+        &:hover {
+            color: rgb(0 ,0 , 0);
+        }
     }
     .app-modal-content-inner {
         overflow-x: hidden;

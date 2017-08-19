@@ -3,8 +3,8 @@
  * 动画函数
  */
 
-import {Injectable} from "@angular/core";
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {AnimationEntryMetadata, Injectable} from "@angular/core";
+import {animate, group, query, state, style, transition, trigger} from "@angular/animations";
 
 @Injectable()
 export class Animations {
@@ -37,5 +37,53 @@ export class Animations {
             animate(50, style({opacity: '0'}))
         ])
     ]);
+
+    /**
+     * 也是淡入淡出 可以自定义参数
+     * @param options
+     */
+    static fadeInOutFun(options: any) {
+        return trigger('fadeInOut', [
+            transition('void => *', [
+                style({opacity: options.opacity}),
+                animate(options.time)
+            ]),
+            transition('* => void', [
+                animate(options.time, style({opacity: '0'}))
+            ])
+        ]);
+    }
+
+    static routeAnimation: AnimationEntryMetadata =
+        trigger('routeAnimation', [
+            transition(':enter', [
+                style({
+                    position: 'absolute'
+                }),
+                animate('0.5s ease-in-out')
+            ]),
+            transition('* => *', [
+                query(':leave', style({ transform: 'translateX(0)', position: 'absolute'}), { optional: true }),
+                query(':enter', style({ transform: 'translateX(100%)', position: 'absolute'}), { optional: true }),
+
+                group([
+                    query(':leave', animate('.5s ease-in-out', style({transform: 'translateX(-100%)'})), { optional: true }),
+                    query(':enter', animate('.5s ease-in-out', style({transform: 'translateX(0)'})), { optional: true })
+                ])
+            ])
+        ]);
+        // trigger('routeAnimation', [
+        //     state('*', style({opacity: 1})),
+        //     transition(':enter', [
+        //         style({opacity: 0}),
+        //         animate('.5s ease-in-out', style({opacity: 1}))
+        //     ]),
+        //     transition(':leave', [
+        //         style({opacity: 1}),
+        //         animate('.5s ease-in-out', style({opacity: 0}))
+        //     ])
+        // ]);
+
+
 
 }

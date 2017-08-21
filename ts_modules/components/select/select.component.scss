@@ -1,13 +1,25 @@
-$borderColor: #999;
+@import '../../../assets/styles/variable.scss';
 
 .container {
-    width: 200px;
-    border: 1px solid $borderColor;
+    width: 216px;
     line-height: 20px;
+    display: inline-block;
+    color: $textColor;
+    &.disabled {
+        .top {
+            color: rgba(0, 0, 0, .25);
+            background-color: #f7f7f7;
+            cursor: not-allowed;
+        }
+    }
     .top {
-        padding: 3px;
+        padding: 3px 7px;
+        border-radius: $borderRradius;
+        border: 1px solid $borderColor;
+        transition: $transitionAll;
         &.showDown {
-            border-bottom: 1px solid $borderColor;
+            border-color: $backgroundColor;
+            color: $backgroundColor;
             .iconfont {
                 transform: rotate(180deg);
             }
@@ -21,19 +33,27 @@ $borderColor: #999;
     }
     .down {
         max-height: 300px;
-        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        z-index: 10;
         > div {
             overflow-y: auto;
             max-height: 300px;
+            background: #fff;
+            border-radius: $borderRradius;
+            box-shadow: 1px 0 5px rgba(0, 0, 0, .1),
+                        -1px 0 5px rgba(0, 0, 0, .1);
+            position: relative;
+            top: 5px;
         }
         li {
-            padding: 3px;
-            transition: all 0.2s ease;
+            padding: 3px 7px;
+            transition: $transitionAll;
             &:hover {
-                background: #888;
+                background: rgba(236, 246, 253, .8);
             }
             &.checked {
-                background: #666;
+                background: rgba(236, 246, 253, .8);
             }
         }
     }

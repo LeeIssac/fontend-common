@@ -22,6 +22,9 @@ export class SelectComponent implements OnInit {
     @Input()
     label: any;  // 显示的key
 
+    @Input()
+    disabled: boolean;
+
     @Output()
     callback: EventEmitter<any> = new EventEmitter(); // 确定点击回调
 
@@ -40,6 +43,9 @@ export class SelectComponent implements OnInit {
      * @param $event
      */
     toggleShowDown($event: MouseEvent) {
+        if (this.disabled) {
+            return;
+        }
         this.showDown = !this.showDown;
 
         if (this.showDown) {

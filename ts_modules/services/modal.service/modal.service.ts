@@ -6,6 +6,7 @@ import {ApplicationRef, ComponentFactoryResolver, Injectable, Injector} from '@a
 import {ModalAlertComponent} from "./components/alert/modal.alert.component";
 import {ModalBasicComponent} from "./components/basic/modal.basic.component";
 import {ModalConfrimComponent} from "./components/confrim/modal.confirm.component";
+import {ModalLoadingComponent} from "./components/loading/modal.loading.component";
 
 export interface ModalOptions {
     /**
@@ -45,6 +46,9 @@ export class ModalService {
     // 层级
     private zIndex = 10;
 
+    // loading实例对象
+    loadingRef: any;
+
     constructor(private applicationRef: ApplicationRef,
                 private componentFactoryResolver: ComponentFactoryResolver,
                 private injector: Injector) {}
@@ -56,73 +60,12 @@ export class ModalService {
      * @returns {any} 自定义模态框组件的引用
      */
     open(content: any, options: ModalOptions = {}) {
-
         // 初始化根组件
         let [contentRef, modalComponentRef] = this.getModalComponentRef(options, ModalBasicComponent);
 
         // 初始化内容组件
-        return this.getContentInstance(content, contentRef, modalComponentRef, options);
+        return [this.getContentInstance(content, contentRef, modalComponentRef, options), modalComponentRef.instance];
     }
-
-    // open(content: any, options: ModalOptions = {}) {
-    //     let factory = this.componentFactoryResolver.resolveComponentFactory(ModalBasicComponent);
-    //
-    //     let newNode = document.createElement(factory.selector);
-    //     document.body.appendChild(newNode);
-    //
-    //     let ref = factory.create(this.injector, [], newNode);
-    //     let ins = ref.instance;
-    //     Object.assign(ins, options);
-    //
-    //     this.applicationRef.attachView(ref.hostView);
-    //     ref.changeDetectorRef.detectChanges();
-    //
-    //     // 这里调用Render2 的方法修改样式
-    //     ins['render'].setStyle(ins['containerRef']['element']['nativeElement'], 'z-index', this.zIndex);
-    //     this.zIndex++;
-    //
-    //     let contentRef = ins['contentRef'];
-    //     const contentFactory = this.componentFactoryResolver.resolveComponentFactory(content);
-    //     let contentComponent = contentRef.createComponent(contentFactory);
-    //     let contentInstance = contentComponent.instance;
-    //
-    //     // 绑定一个destroy给外部调用 删除模态组件
-    //     contentInstance['destroy'] = () => {
-    //         this.destroy(contentComponent, ref);
-    //     };
-    //
-    //     // 获取根组件实例
-    //     let modalComponentInstance = ref.instance;
-    //     // 给背景层增加点击事件
-    //     modalComponentInstance['overlayClick'] = () => {
-    //         options.backdrop !== false &&
-    //         options.backdrop !== 'static' &&
-    //         this.destroy(contentComponent, ref);
-    //     };
-    //     // 给关闭按钮增加点击事件
-    //     modalComponentInstance['closeClick'] = () => {
-    //         this.destroy(contentComponent, ref);
-    //     };
-    //
-    //     return contentInstance;
-    // }
-
-    /**
-     * 弹出提示pop
-     * @param message 显示的消息
-     * @param time 保留时间，超过时间自动小时
-     */
-    // alert(message: string, time: number = 1000) {
-    //
-    //     // 初始化根组件
-    //     let [contentRef, modalComponentRef] = this.getModalComponentRef({
-    //         message
-    //     }, ModalAlertComponent);
-    //
-    //     setTimeout(() => {
-    //         this.destroy(contentRef, modalComponentRef);
-    //     }, time);
-    // }
 
     /**
      * 弹出提示pop
@@ -167,6 +110,43 @@ export class ModalService {
         });
 
         return ins;
+    }
+
+    /**
+     * 显示loading
+     * @param {number} delay 自动延迟关闭时间
+     */
+    loadingShow(delay?: number) {
+        if (this.loadingRef) {
+            return;
+        }
+
+        let factory = this.componentFactoryResolver.resolveComponentFactory(ModalLoadingComponent);
+        let newNode = document.createElement(factory.selector);
+
+        document.body.appendChild(newNode);
+
+        this.loadingRef = factory.create(this.injector, [], newNode);
+
+        this.applicationRef.attachView(this.loadingRef.hostView);
+        this.loadingRef.changeDetectorRef.detectChanges();
+
+        if (delay) {
+            setTimeout(() => {
+                this.loadingRef.destroy();
+                this.loadingRef = null;
+            }, delay);
+        }
+    }
+
+    /**
+     * 手动关闭loading
+     */
+    loadingHide() {
+        if (this.loadingRef) {
+            this.loadingRef.destroy();
+            this.loadingRef = null;
+        }
     }
 
     /**

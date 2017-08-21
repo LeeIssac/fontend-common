@@ -160,18 +160,18 @@ $unit: 1px;
     display: inline-block;
     position: relative;
 
-    input[type="text"], input[type="password"], select, textarea {
-        border: 1px solid #93C2FC;
-        border-radius: 4px;
-        padding: 5px;
-        width: 150px;
-    }
-    input[type="text"]:hover, input[type="password"], input[type="text"]:active, textarea:active {
-        border: 1px solid #89BCFC;
-    }
-    select {
-        width: 162px;
-    }
+    //input[type="text"], input[type="password"], select, textarea {
+    //    border: 1px solid #93C2FC;
+    //    border-radius: 4px;
+    //    padding: 5px;
+    //    width: 150px;
+    //}
+    //input[type="text"]:hover, input[type="password"], input[type="text"]:active, textarea:active {
+    //    border: 1px solid #89BCFC;
+    //}
+    //select {
+    //    width: 162px;
+    //}
 
     input.error {
         border-color: #FA1515;

@@ -48,4 +48,12 @@
         overflow-x: hidden;
         overflow-y: auto;
     }
+    .app-modal-btns {
+        padding: 10px;
+        text-align: center;
+        border-top: 1px solid $borderColor;
+        button {
+            margin-right: 10px;
+        }
+    }
 }

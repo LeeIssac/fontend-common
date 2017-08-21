@@ -12,7 +12,7 @@ import {animate, style, trigger, transition} from '@angular/animations';
     animations: [
         trigger('fadeInOut', [
             transition('void => *', [
-                style({opacity: '0.3'}),
+                style({opacity: '.3'}),
                 animate(50)
             ]),
             transition('* => void', [
@@ -38,6 +38,8 @@ export class ModalBasicComponent {
     showTitle: boolean = true;
     // 模态框title
     title: string;
+    // 按钮
+    btns: any;
 
     // 背景层点击
     overlayClick() {}
@@ -51,5 +53,13 @@ export class ModalBasicComponent {
 
     constructor(private render: Renderer2) {
         // render 用于样式修改
+    }
+
+    /**
+     * 添加按钮
+     * @param btns
+     */
+    addBtns(btns: any) {
+        this.btns = btns;
     }
 }

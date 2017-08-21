@@ -9,5 +9,8 @@
         <div class="app-modal-content-inner">
             <ng-template #content></ng-template>
         </div>
+        <div class="app-modal-btns">
+            <button *ngFor="let btn of btns" (click)="btn.click()" [class]="btn.class">{{btn.name}}</button>
+        </div>
     </div>
 </div>

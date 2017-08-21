@@ -59,7 +59,7 @@ export class ModalBasicComponent {
      * 添加按钮
      * @param btns
      */
-    addBtns(btns: any) {
+    setBtns(btns: any) {
         this.btns = btns;
     }
 }

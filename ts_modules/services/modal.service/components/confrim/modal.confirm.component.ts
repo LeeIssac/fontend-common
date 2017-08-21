@@ -13,7 +13,8 @@ export class ModalConfrimComponent {
     message: string;
 
     // 确定点击
-    okClick() {}
+    okClick() {
+    }
 
     // 取消点击
     cancelClick() {}

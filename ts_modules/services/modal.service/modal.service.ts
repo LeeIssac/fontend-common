@@ -103,13 +103,13 @@ export class ModalService {
     confrim(message: string, options: ModalOptions = {}) {
         options.title = options.title || '提示';
 
-        let ins = this.open(ModalConfrimComponent, options);
+        let [ins, pIns] = this.open(ModalConfrimComponent, options);
 
         Object.assign(ins, {
             message: message
         });
 
-        return ins;
+        return [ins, pIns];
     }
 
     /**

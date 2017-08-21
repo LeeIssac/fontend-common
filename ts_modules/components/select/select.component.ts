@@ -25,6 +25,9 @@ export class SelectComponent implements OnInit {
     @Input()
     disabled: boolean;
 
+    @Input()
+    index: number;
+
     @Output()
     callback: EventEmitter<any> = new EventEmitter(); // 确定点击回调
 
@@ -68,7 +71,14 @@ export class SelectComponent implements OnInit {
      * @param $event
      */
     optionClick(option: any, $event: MouseEvent) {
-        this.callback.emit(option);
+        if (this.index !== undefined) {
+            this.callback.emit({
+                checked: option,
+                index: this.index
+            });
+        } else {
+            this.callback.emit(option);
+        }
 
         $event.stopPropagation();
     }

@@ -3,12 +3,12 @@
  * tooltip 文字提示
  */
 
-import {Directive, ElementRef, Input, OnInit, Renderer2} from "@angular/core";
+import {Directive, ElementRef, Input, OnDestroy, OnInit, Renderer2} from "@angular/core";
 
 @Directive({
     selector: '[tooltip]'
 })
-export class TooltipDirective implements OnInit {
+export class TooltipDirective implements OnInit, OnDestroy {
 
     @Input()
     tooltip: string;
@@ -43,6 +43,10 @@ export class TooltipDirective implements OnInit {
         this.render.listen(this.element.nativeElement, 'mouseleave', () => {
             this.removeTip();
         });
+    }
+
+    ngOnDestroy() {
+        this.removeTip();
     }
 
     getSize() {

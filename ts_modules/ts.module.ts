@@ -15,6 +15,8 @@ import {MediaModule} from "./services/media.service/media.module";
 import {TooltipDirective} from "./directives/tooltip/tooltip.directive";
 import {ShowDirective} from "./directives/show/show.directive";
 import {ToolService} from "./services/tool.service";
+import {SizePipe} from "./pipe/size.pipe";
+import {SubstrPipe} from "./pipe/string.pipe";
 
 @NgModule({
     imports: [
@@ -26,6 +28,8 @@ import {ToolService} from "./services/tool.service";
         PaginationComponent,
         SelectComponent,
         DatePipe,
+        SizePipe,
+        SubstrPipe,
         TooltipDirective,
         ShowDirective
     ],
@@ -37,6 +41,8 @@ import {ToolService} from "./services/tool.service";
         PaginationComponent,
         SelectComponent,
         DatePipe,
+        SizePipe,
+        SubstrPipe,
         TooltipDirective,
         ShowDirective
     ]

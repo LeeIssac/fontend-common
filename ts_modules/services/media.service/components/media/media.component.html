@@ -1,6 +1,9 @@
 <div class="app-modal-container">
     <div class="app-modal-overlay"></div>
     <div class="app-modal-content">
+        <span class="close" (click)="closeClick()">
+            <i class="iconfont">&#xe62b;</i>
+        </span>
         <div class="img-container" *ngIf="type==='image'">
             <img [src]="src">
         </div>
@@ -12,8 +15,5 @@
         <div class="img-container" *ngIf="type==='audio'">
             <audio [src]="src" controls></audio>
         </div>
-        <span class="close" (click)="closeClick()">
-            <i class="iconfont">&#xe62b;</i>
-        </span>
     </div>
 </div>

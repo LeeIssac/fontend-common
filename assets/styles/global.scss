@@ -1,3 +1,19 @@
+// 滚动条样式
+::-webkit-scrollbar {
+    width: 10px!important;
+    height: 10px!important;
+    -webkit-appearance: none
+}
+::-webkit-scrollbar-thumb {
+    height: 5px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: none;
+    -webkit-border-radius: 6px;
+    background-color: rgba(0, 0, 0, .3);
+    background-clip: padding-box
+}
+
 html {
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -30,9 +46,7 @@ h6 {
     display: block;
     width: auto;
     word-break: keep-all;
-    /* 不换行 */
-    white-space: nowrap;
-    /* 不换行 */
+    white-space: nowrap; // 不换行
     word-wrap: normal;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -54,8 +68,7 @@ h6 {
 .clearfix {
     *zoom: 1;
 }
-.clearfix:before,
-.clearfix:after {
+.clearfix:before, .clearfix:after {
     display: table;
     line-height: 0;
     content: "";
@@ -107,7 +120,7 @@ $unit: 1px;
 }
 
 // 水平对齐
-.line > *{
+.line > * {
     display: inline-block;
     vertical-align: middle;
 }
@@ -133,22 +146,6 @@ $unit: 1px;
     display: none;
 }
 
-/* Change autocomplete styles in WebKit */
-//input:-webkit-autofill,
-//input:-webkit-autofill:hover,
-//input:-webkit-autofill:focus,
-//input:-webkit-autofill,
-//textarea:-webkit-autofill,
-//textarea:-webkit-autofill:hover,
-//textarea:-webkit-autofill:focus,
-//select:-webkit-autofill,
-//select:-webkit-autofill:hover,
-//select:-webkit-autofill:focus {
-//    -webkit-text-fill-color: #fff;
-//    -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0) inset;
-//    transition: background-color 5000s ease-in-out 0s;
-//}
-
 /**
     一组from表单样式 基本模板
     <span class="input-container">
@@ -159,20 +156,6 @@ $unit: 1px;
 .input-container {
     display: inline-block;
     position: relative;
-
-    //input[type="text"], input[type="password"], select, textarea {
-    //    border: 1px solid #93C2FC;
-    //    border-radius: 4px;
-    //    padding: 5px;
-    //    width: 150px;
-    //}
-    //input[type="text"]:hover, input[type="password"], input[type="text"]:active, textarea:active {
-    //    border: 1px solid #89BCFC;
-    //}
-    //select {
-    //    width: 162px;
-    //}
-
     input.error {
         border-color: #FA1515;
     }

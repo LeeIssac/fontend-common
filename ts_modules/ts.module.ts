@@ -8,6 +8,7 @@ import {CommonModule} from "@angular/common";
 
 import {PaginationComponent} from "./components/pagination/pagination.component";
 import {SelectComponent} from "./components/select/select.component";
+import {MultiSelectComponent} from "./components/multi.select/multi.select.component";
 import {DatePipe} from "./pipe/date.pipe";
 import {HttpService} from "./services/http.service";
 import {ModalModule} from "./services/modal.service/modal.module";
@@ -27,6 +28,7 @@ import {SubstrPipe} from "./pipe/string.pipe";
     declarations: [
         PaginationComponent,
         SelectComponent,
+        MultiSelectComponent,
         DatePipe,
         SizePipe,
         SubstrPipe,

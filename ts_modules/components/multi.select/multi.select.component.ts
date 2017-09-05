@@ -1,21 +1,20 @@
 /**
- * Created by LIHUA on 2017-08-12.
- * 单选下拉框
+ * Created by LIHUA on 2017-09-05.
+ *  多选下拉框
  */
 
 import {Component, EventEmitter, Input, OnInit, Output, Renderer2} from "@angular/core";
 import {Animations} from "../../animations/animations";
 
 @Component({
-    selector: 'select-component',
-    templateUrl: './select.component.html',
-    styleUrls: ['./select.component.scss'],
+    selector: 'multi-select-component',
+    templateUrl: './multi.select.component.html',
+    styleUrls: ['./multi.select.component.scss'],
     animations: [Animations.slideUpDwon]
 })
-export class SelectComponent implements OnInit {
-
+export class MultiSelectComponent implements OnInit {
     @Input()
-    option: any;       // 当前被选中的option
+    option: any;       // 当前被选中的options
 
     @Input()           // options列表
     options: any;
@@ -28,9 +27,6 @@ export class SelectComponent implements OnInit {
 
     @Input()
     index: number;     // 序号，主要是循环出现的时候 区分序列
-
-    @Input()
-    fixed: boolean;    // 是否固定 所谓固定是点击选择的时候不主动隐藏下拉框 true 不隐藏， 默认隐藏
 
     @Output()
     callback: EventEmitter<any> = new EventEmitter(); // 确定点击回调
@@ -75,20 +71,42 @@ export class SelectComponent implements OnInit {
      * @param $event
      */
     optionClick(option: any, $event: MouseEvent) {
+        if (!option.checked) {
+            option.checked = true;
+            this.option.push(option);
+            this.sendEmit();
+        }
+
+        $event.stopPropagation();
+    }
+
+    /**
+     * 删除选择
+     * @param option
+     * @param {number} index
+     * @param {MouseEvent} event
+     */
+    deleteClick(option: any, index: number, $event: MouseEvent) {
+
+        this.options.forEach(op => {
+            if (op[this.label] === option[this.label]) {
+                op.checked = false;
+            }
+        });
+        this.option.splice(index, 1);
+        this.sendEmit();
+
+        $event.stopPropagation();
+    }
+
+    sendEmit() {
         if (this.index !== undefined) {
             this.callback.emit({
-                checked: option,
+                checked: this.option,
                 index: this.index
             });
         } else {
-            this.callback.emit(option);
-        }
-
-        if (this.fixed) {
-            // 固定 就是点击选项框的时候不隐藏下拉菜单
-            $event.stopPropagation();
+            this.callback.emit(this.option);
         }
     }
-
 }
-

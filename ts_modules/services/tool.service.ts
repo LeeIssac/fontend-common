@@ -141,4 +141,20 @@ export class ToolService {
 
         return uuid.join('');
     };
+
+    /**
+     * 判定真值 然后执行
+     * @param first  判定函数
+     * @param second 执行函数
+     * @param time   定时
+     */
+    run = (first, second, time) => {
+        if (first()) {
+            second();
+        } else {
+            setTimeout(() => {
+                this.run(first, second, time);
+            }, time);
+        }
+    }
 }

@@ -8,18 +8,18 @@ import {animate, style, trigger, transition} from '@angular/animations';
 @Component({
     selector: 'modal-slot-component',
     templateUrl: './modal.slot.component.html',
-    styleUrls: ['./modal.slot.component.scss'],
-    animations: [
-        trigger('fadeInOut', [
-            transition('void => *', [
-                style({opacity: '.3'}),
-                animate(50)
-            ]),
-            transition('* => void', [
-                animate(50, style({opacity: '0'}))
-            ])
-        ])
-    ]
+    styleUrls: ['./modal.slot.component.scss']
+    // animations: [
+    //     trigger('fadeInOut', [
+    //         transition('void => *', [
+    //             style({opacity: '.3'}),
+    //             animate(50)
+    //         ]),
+    //         transition('* => void', [
+    //             animate(50, style({opacity: '0'}))
+    //         ])
+    //     ])
+    // ]
 })
 export class ModalSlotComponent {
 

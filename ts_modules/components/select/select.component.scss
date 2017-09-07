@@ -1,7 +1,8 @@
 @import '../../../assets/styles/variable.scss';
 
 .container {
-    width: 216px;
+    min-width: 216px;
+    width: 100%;
     line-height: 20px;
     display: inline-block;
     color: $textColor;

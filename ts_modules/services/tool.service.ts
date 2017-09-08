@@ -125,7 +125,7 @@ export class ToolService {
 
         if (len) {
             for (i = 0; i < len; i++) {
-                uuid[i] = chars[0 | Math.random() * radix]
+                uuid[i] = chars[0 | Math.random() * radix];
             }
         } else {
             let r;

@@ -31,7 +31,13 @@ export class MultiSelectComponent implements OnInit {
     @Output()
     callback: EventEmitter<any> = new EventEmitter(); // 确定点击回调
 
-    showDown = false;  // 是否显示下拉
+    @Input()
+    position: string;    // 下拉位置 默认底部， top 顶部
+
+    @Input()
+    placeholder: string; // 空白描述
+
+    showDown = false;    // 是否显示下拉
 
     backgroundClickRef: any; // 背景点击引用
 
@@ -39,6 +45,8 @@ export class MultiSelectComponent implements OnInit {
 
     ngOnInit() {
         this.label = this.label || 'name';
+        this.options = JSON.parse(JSON.stringify(this.options)); // 数据源重拷贝
+        this.position = this.position || 'bottom';
     }
 
     /**

@@ -2,10 +2,10 @@
     <div class="top clearfix"
          [class.showDown]="showDown"
          (click)="toggleShowDown($event)">
-        <span [innerHTML]="(option&&option[label])||'&nbsp;'"></span>
+        <span [innerHTML]="(option&&option[label]) || placeholder || '&nbsp;'"></span>
         <i class="iconfont" >&#xe62f;</i>
     </div>
-    <div class="down" *ngIf="showDown" [@slideUpDwon]>
+    <div class="down" *ngIf="showDown" [class.pos-top]="position==='top'">
         <div>
             <ul>
                 <li *ngFor="let op of options"

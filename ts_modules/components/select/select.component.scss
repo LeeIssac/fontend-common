@@ -38,6 +38,9 @@
         position: absolute;
         width: 100%;
         z-index: 10;
+        &.pos-top {
+            bottom: calc(100% + 10px);
+        }
         > div {
             overflow-y: auto;
             max-height: 300px;

@@ -2,7 +2,10 @@
  * Created by LIHUA on 2017-08-09.
  */
 
-import {Component, Renderer2, ViewChild, ViewContainerRef} from '@angular/core';
+import {
+    AfterContentInit, AfterViewChecked, AfterViewInit, Component, Renderer2, ViewChild,
+    ViewContainerRef
+} from '@angular/core';
 import {animate, style, trigger, transition} from '@angular/animations';
 
 @Component({
@@ -21,7 +24,7 @@ import {animate, style, trigger, transition} from '@angular/animations';
         ])
     ]
 })
-export class ModalBasicComponent {
+export class ModalBasicComponent implements AfterViewInit {
     // 控制动画显示
     isShow: boolean = true;
 
@@ -41,6 +44,8 @@ export class ModalBasicComponent {
     // 按钮
     btns: any;
 
+    width: number;
+
     // 背景层点击
     overlayClick() {}
     // 关闭按钮点击
@@ -53,6 +58,15 @@ export class ModalBasicComponent {
 
     constructor(private render: Renderer2) {
         // render 用于样式修改
+    }
+
+    ngAfterViewInit() {
+        // 模态框暂时放弃 transform: translate(-40%, -50%); 布局方式，原因是使自容器模糊了
+        setTimeout(() => {
+            let container = this.containerRef.element.nativeElement;
+            let content = container.querySelector('.app-modal-content');
+            this.width = content.clientWidth;
+        });
     }
 
     /**

@@ -1,6 +1,6 @@
 <div class="app-modal-container {{ containerClass }}" [@fadeInOut] *ngIf="isShow" #container>
     <div class="app-modal-overlay {{ overlayClass }}" (click)="overlayClick()" *ngIf="backdrop!==false"></div>
-    <div class="app-modal-content {{ contentClass }}">
+    <div class="app-modal-content {{ contentClass }}" [style.width.px]="width" [style.marginLeft.px]="-width/2">
         <div class="app-modal-content-title" *ngIf="showTitle">
             <span class="title">{{ title }}</span>
             <!--<span class="close" (click)="closeClick()"></span>-->

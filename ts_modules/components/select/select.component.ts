@@ -30,6 +30,9 @@ export class SelectComponent implements OnInit {
     index: number;     // 序号，主要是循环出现的时候 区分序列
 
     @Input()
+    type: string;     // 序号类型
+
+    @Input()
     fixed: boolean;    // 是否固定 所谓固定是点击选择的时候不主动隐藏下拉框 true 不隐藏， 默认隐藏
 
     @Output()
@@ -130,7 +133,7 @@ export class SelectComponent implements OnInit {
         // 选中本身
         option.checked = true;
 
-        let temp = (this.index !== undefined) ? { checked: option, index: this.index } : option;
+        let temp = (this.index !== undefined) ? { checked: option, index: this.index, type: this.type  } : option;
         this.callback.emit(temp);
 
         this.deleteSearchInput();
@@ -148,7 +151,7 @@ export class SelectComponent implements OnInit {
     clearClick($event: MouseEvent) {
         this.options.forEach(op => op.checked = false);
 
-        let temp = this.index ? { checked: null, index: this.index } : null;
+        let temp = this.index ? { checked: null, index: this.index, type: this.type } : null;
         this.callback.emit(temp);
 
         this.deleteSearchInput();

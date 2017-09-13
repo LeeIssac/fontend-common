@@ -6,12 +6,20 @@
         <i class="iconfont arrow">&#xe62f;</i>
         <i class="iconfont clear" *ngIf="clear&&showDown" (click)="clearClick($event)">&#xe62b;</i>
     </div>
-    <div class="down" *ngIf="showDown" [class.pos-top]="position==='top'">
-        <div>
+    <div class="down"
+         *ngIf="showDown"
+         [class.pos-top]="position==='top'"
+         [class.pos-bottom]="position==='bottom'">
+        <div class="search"
+             (click)="searchClick($event)"
+             *ngIf="search"
+             [class.pos-top]="position==='top'"
+             [class.pos-bottom]="position==='bottom'">
+            <input type="text" class="input" #searchInput (keyup)="searchKeyup(searchInput.value)">
+        </div>
+        <div class="search-blank" *ngIf="search&&position==='bottom'"></div>
+        <div class="content">
             <ul>
-                <li class="search" (click)="searchClick($event)" *ngIf="search">
-                    <input type="text" class="input" #searchInput (keyup)="searchKeyup(searchInput.value)">
-                </li>
                 <li *ngFor="let op of options"
                     (click)="optionClick(op, $event)"
                     [class.checked]="op.checked"
@@ -20,5 +28,6 @@
                 </li>
             </ul>
         </div>
+        <div class="search-blank" *ngIf="search&&position==='top'"></div>
     </div>
 </div>

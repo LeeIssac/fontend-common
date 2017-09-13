@@ -130,7 +130,7 @@ export class SelectComponent implements OnInit {
         // 选中本身
         option.checked = true;
 
-        let temp = this.index ? { checked: option, index: this.index } : option;
+        let temp = (this.index !== undefined) ? { checked: option, index: this.index } : option;
         this.callback.emit(temp);
 
         this.deleteSearchInput();

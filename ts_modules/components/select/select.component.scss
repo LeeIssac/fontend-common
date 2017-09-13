@@ -40,18 +40,45 @@
         position: absolute;
         width: 100%;
         z-index: 10;
+        background: #fff;
+        border-radius: $borderRradius;
+        box-shadow: 1px 0 5px rgba(0, 0, 0, .1),
+            -1px 0 5px rgba(0, 0, 0, .1);
+
+        overflow-y: hidden;
         &.pos-top {
-            bottom: calc(100% + 10px);
+            bottom: calc(100% + 4px);
         }
-        > div {
-            overflow-y: auto;
-            max-height: 230px;
+        &.pos-bottom {
+            top: calc(100% + 10px);
+        }
+        .search {
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 1;
             background: #fff;
-            border-radius: $borderRradius;
-            box-shadow: 1px 0 5px rgba(0, 0, 0, .1),
-                        -1px 0 5px rgba(0, 0, 0, .1);
+            margin: 6px 18px;
+            &.pos-top {
+                bottom: 0;
+            }
+            &.pos-bottom {
+                top: 0;
+            }
+            input {
+                padding: 3px;
+                width: 100%;
+                position: relative;
+                left: -8px;
+            }
+        }
+        .search-blank {
+            height: 37px;
+        }
+        .content {
+            overflow-y: auto;
+            max-height: 200px;
             position: relative;
-            top: 5px;
         }
         li {
             padding: 3px 7px;
@@ -63,16 +90,6 @@
                 color: rgba(0, 0, 0, 0.25);
                 background: #fff;
                 cursor: not-allowed;
-            }
-            &.search {
-                padding: 3px 0;
-                margin: 0 10px;
-                input {
-                    padding: 3px;
-                    width: 100%;
-                    position: relative;
-                    left: -3px;
-                }
             }
         }
     }

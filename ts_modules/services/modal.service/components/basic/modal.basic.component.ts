@@ -61,7 +61,7 @@ export class ModalBasicComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // 模态框暂时放弃 transform: translate(-40%, -50%); 布局方式，原因是使自容器模糊了
+        // 模态框暂时放弃 transform: translate(-40%, -50%); 布局方式，原因是使子容器模糊了
         setTimeout(() => {
             let container = this.containerRef.element.nativeElement;
             let content = container.querySelector('.app-modal-content');

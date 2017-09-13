@@ -1,6 +1,6 @@
-<div class="app-modal-container" *ngIf="show" >
+<div class="app-modal-container" *ngIf="show" #container>
     <div class="app-modal-overlay"></div>
-    <div class="app-modal-content">
+    <div class="app-modal-content" [style.width.px]="width" [style.marginLeft.px]="-width/2">
         <div class="app-modal-content-title">
             <span class="title">
                 <ng-content select=".slot-header"></ng-content>

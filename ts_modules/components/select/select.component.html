@@ -9,7 +9,7 @@
     <div class="down" *ngIf="showDown" [class.pos-top]="position==='top'">
         <div>
             <ul>
-                <li class="search" (click)="searchClick($event)">
+                <li class="search" (click)="searchClick($event)" *ngIf="search">
                     <input type="text" class="input" #searchInput (keyup)="searchKeyup(searchInput.value)">
                 </li>
                 <li *ngFor="let op of options"

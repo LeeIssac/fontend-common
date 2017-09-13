@@ -3,7 +3,7 @@
  * 单选下拉框
  */
 
-import {Component, EventEmitter, Input, OnInit, Output, Renderer2} from "@angular/core";
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from "@angular/core";
 import {Animations} from "../../animations/animations";
 
 @Component({
@@ -41,6 +41,21 @@ export class SelectComponent implements OnInit {
     @Input()
     placeholder: string; // 空白描述
 
+    @Input()
+    single = false;      // 是否为单一源选择，单一源就是 源不拷贝
+
+    @Input()
+    clear = false;      // 是否显示清除按钮
+
+    @Input()
+    search = false;     // 是否显示搜索按钮
+    @Input()
+    searchs: any;       // 待搜索数组
+    @Output()
+    searchCallback: EventEmitter<any> = new EventEmitter();  // 搜索回调
+    @ViewChild('searchInput')
+    searchInput: ElementRef;                                 // 搜索绑定
+
     showDown = false;  // 是否显示下拉
 
     backgroundClickRef: any; // 背景点击引用
@@ -50,6 +65,11 @@ export class SelectComponent implements OnInit {
     ngOnInit() {
         this.label = this.label || 'name';
         this.position = this.position || 'bottom';
+
+        // 非单一源 数据拷贝
+        if (!this.single) {
+            this.options = JSON.parse(JSON.stringify(this.options));
+        }
     }
 
     /**
@@ -73,6 +93,8 @@ export class SelectComponent implements OnInit {
             this.backgroundClickRef = null;
         }
 
+        this.deleteSearchInput();
+
         $event.stopPropagation();
     }
 
@@ -82,18 +104,100 @@ export class SelectComponent implements OnInit {
      * @param $event
      */
     optionClick(option: any, $event: MouseEvent) {
-        if (this.index !== undefined) {
-            this.callback.emit({
-                checked: option,
-                index: this.index
-            });
+
+        // 如果是single状态
+        if (this.single) {
+            // 点击已经选中的option直接返回
+            if (option.checked) {
+                $event.stopPropagation();
+                return;
+            }
+
+            // 如果存在原来的选中数据 就把原来的选中置空
+            if (this.option) {
+                this.options.forEach(op => {
+                    if (op[this.label] === this.option[this.label]) {
+                        op.checked = false;
+                    }
+                });
+            }
+
         } else {
-            this.callback.emit(option);
+            // 非single状态就全部清除选中状态
+            this.options.forEach(op => op.checked = false);
         }
+
+        // 选中本身
+        option.checked = true;
+
+        let temp = this.index ? { checked: option, index: this.index } : option;
+        this.callback.emit(temp);
+
+        this.deleteSearchInput();
 
         if (this.fixed) {
             // 固定 就是点击选项框的时候不隐藏下拉菜单
             $event.stopPropagation();
+        }
+    }
+
+    /**
+     * 清除选中
+     * @param {MouseEvent} $event
+     */
+    clearClick($event: MouseEvent) {
+        this.options.forEach(op => op.checked = false);
+
+        let temp = this.index ? { checked: null, index: this.index } : null;
+        this.callback.emit(temp);
+
+        this.deleteSearchInput();
+
+        $event.stopPropagation();
+    }
+
+    /**
+     * 搜索点击
+     * @param {string} search
+     */
+    searchKeyup(search: string) {
+        this.searchCallback.emit(search);
+
+        if (this.searchs && this.searchs.length) {
+            if (search) {
+                let temp = [];
+                this.searchs.forEach(s => {
+                    if (s[this.label].indexOf(search) !== -1) {
+                        temp.push(s);
+                    }
+                });
+                this.options = temp;
+            } else {
+                this.options = this.searchs;
+            }
+        }
+    }
+
+    /**
+     * 搜索点击
+     * @param {string} search
+     */
+    searchClick($event: MouseEvent) {
+        $event.stopPropagation();
+    }
+
+    /**
+     * 清除搜索框内容
+     */
+    deleteSearchInput() {
+        if (this.search) {
+            if (this.searchInput && this.searchInput.nativeElement) {
+                this.searchInput.nativeElement.value = '';
+            }
+
+            if (this.searchs && this.searchs.length) {
+                this.options = this.searchs;
+            }
         }
     }
 

@@ -54,34 +54,12 @@ export class Animations {
         ]);
     }
 
-    static routeAnimation: AnimationEntryMetadata =
-        trigger('routeAnimation', [
-            transition(':enter', [
-                style({
-                    // position: 'absolute',
-                    opacity: 0
-                }),
-                animate('0.3s ease-in-out')
-            ]),
-            transition('* => *', [
-                // query(':leave', style({ transform: 'translateX(0)', position: 'absolute'}), { optional: true }),
-                // query(':enter', style({ transform: 'translateX(100%)', position: 'absolute'}), { optional: true }),
-                //
-                // group([
-                //     query(':leave', animate('.5s ease-in-out', style({transform: 'translateX(-100%)'})), { optional: true }),
-                //     query(':enter', animate('.5s ease-in-out', style({transform: 'translateX(0)'})), { optional: true })
-                // ])
-
-                query(':leave', [animate('0.5s', style({ opacity: 0 })), style({ display: 'none' })], { optional: true }),
-                query(':enter', style({opacity: 0}), { optional: true }),
-
-                group([
-                    query(':leave', animate('.5s ease-in-out', style({opacity: 0})), { optional: true }),
-                    query(':enter', animate('.5s ease-in-out', style({opacity: 1})), { optional: true })
-                ])
-            ])
-        ]);
-
+    static routeAnimation: AnimationEntryMetadata = trigger('routerAnimation', [
+        transition(':enter', [
+            style({ opacity: 0.5 }),
+            animate('0.4s ease', style({ opacity: 1 }))
+        ])
+    ]);
 
 
 }

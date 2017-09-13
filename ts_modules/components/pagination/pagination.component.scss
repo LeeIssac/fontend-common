@@ -12,6 +12,7 @@
             position: relative;
             border: 1px solid $borderColor;
             border-left: 0;
+            transition: $transitionAll;
             &:first-child {
                 border-left: 1px solid $borderColor;
                 cursor: default;

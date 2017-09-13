@@ -13,6 +13,7 @@ import {Animations} from "../../animations/animations";
     animations: [Animations.slideUpDwon]
 })
 export class MultiSelectComponent implements OnInit {
+
     @Input()
     option: any;       // 当前被选中的options
 
@@ -37,6 +38,9 @@ export class MultiSelectComponent implements OnInit {
     @Input()
     placeholder: string; // 空白描述
 
+    @Input()
+    single = false;      // 是否为单一源选择，单一源就是 源不拷贝
+
     showDown = false;    // 是否显示下拉
 
     backgroundClickRef: any; // 背景点击引用
@@ -45,8 +49,12 @@ export class MultiSelectComponent implements OnInit {
 
     ngOnInit() {
         this.label = this.label || 'name';
-        this.options = JSON.parse(JSON.stringify(this.options)); // 数据源重拷贝
         this.position = this.position || 'bottom';
+
+        // 非单一源 数据拷贝
+        if (!this.single) {
+            this.options = JSON.parse(JSON.stringify(this.options));
+        }
     }
 
     /**
@@ -95,7 +103,6 @@ export class MultiSelectComponent implements OnInit {
      * @param {MouseEvent} event
      */
     deleteClick(option: any, index: number, $event: MouseEvent) {
-
         this.options.forEach(op => {
             if (op[this.label] === option[this.label]) {
                 op.checked = false;

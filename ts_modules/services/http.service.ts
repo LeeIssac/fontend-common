@@ -12,12 +12,8 @@ export class HttpService {
 
     // 基本服务器地址
     serverUrl = '';
-
     // http token
     token: string;
-
-
-
 
     // post 请求默认参数
     defaultOption: RequestOptionsArgs = {

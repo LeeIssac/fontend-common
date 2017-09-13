@@ -3,14 +3,19 @@
          [class.showDown]="showDown"
          (click)="toggleShowDown($event)">
         <span [innerHTML]="(option&&option[label]) || placeholder || '&nbsp;'"></span>
-        <i class="iconfont" >&#xe62f;</i>
+        <i class="iconfont arrow">&#xe62f;</i>
+        <i class="iconfont clear" *ngIf="clear&&showDown" (click)="clearClick($event)">&#xe62b;</i>
     </div>
     <div class="down" *ngIf="showDown" [class.pos-top]="position==='top'">
         <div>
             <ul>
+                <li class="search" (click)="searchClick($event)">
+                    <input type="text" class="input" #searchInput (keyup)="searchKeyup(searchInput.value)">
+                </li>
                 <li *ngFor="let op of options"
                     (click)="optionClick(op, $event)"
-                    [class.checked]="option===op">
+                    [class.checked]="op.checked"
+                    [class.single]="op.checked&&single">
                     <span>{{op[label]}}</span>
                 </li>
             </ul>

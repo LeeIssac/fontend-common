@@ -55,9 +55,18 @@ export class Animations {
     }
 
     static routeAnimation: AnimationEntryMetadata = trigger('routerAnimation', [
-        transition(':enter', [
-            style({ opacity: 0.5 }),
-            animate('0.4s ease', style({ opacity: 1 }))
+        transition('* => *', [
+            query(':enter', style({ position: 'fixed', right: '10px', left: '210px'}), { optional: true }),
+            group([
+                // query(':leave', [
+                //     style({ opacity: 1 }),
+                //     animate('0.1s ease-out', style({ opacity: 0 }))
+                // ], { optional: true }),
+                query(':enter', [
+                    style({ opacity: 0.5 }),
+                    animate('250ms 50ms ease-in-out', style({ opacity: 1 }))
+                ], { optional: true }),
+            ])
         ])
     ]);
 

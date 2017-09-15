@@ -3,7 +3,7 @@
  *  辅助工具类
  */
 
-import {Injectable} from "@angular/core";
+import {ElementRef, Injectable} from "@angular/core";
 
 @Injectable()
 export class ToolService {
@@ -156,5 +156,20 @@ export class ToolService {
                 this.run(first, second, time);
             }, time);
         }
+    }
+
+    /**
+     * 获取元素的dom位置
+     * @param element
+     * @returns {{x: (number | any); y: (number | any)}}
+     */
+    getElementPositionPoint = (element: any) => {
+        let x = element.offsetLeft,
+            y = element.offsetTop;
+        while (element = element.offsetParent) {
+            x += element.offsetLeft;
+            y += element.offsetTop;
+        }
+        return {x, y};
     }
 }

@@ -7,6 +7,7 @@ import {
     ViewContainerRef
 } from '@angular/core';
 import {animate, style, trigger, transition} from '@angular/animations';
+import {ToolService} from "../../../tool.service";
 
 @Component({
     selector: 'modal-basci-component',
@@ -14,18 +15,18 @@ import {animate, style, trigger, transition} from '@angular/animations';
     styleUrls: ['./modal.basci.component.scss'],
     animations: [
         trigger('fadeInOut', [
-            transition('void => *', [
+            transition(':enter', [
                 style({opacity: '.3'}),
-                animate(50)
+                animate(100)
             ]),
-            transition('* => void', [
-                animate(50, style({opacity: '0'}))
+            transition(':leave', [
+                animate(100, style({opacity: '0'}))
             ])
         ])
     ]
 })
 export class ModalBasicComponent implements AfterViewInit {
-    // 控制动画显示
+    // 控制背景动画显示
     isShow: boolean = true;
 
     // 是否显示背景 及 背景点击
@@ -56,7 +57,8 @@ export class ModalBasicComponent implements AfterViewInit {
     // 内容节点引用
     @ViewChild('content', {read: ViewContainerRef}) contentRef;
 
-    constructor(private render: Renderer2) {
+    constructor(private render: Renderer2,
+                private toolService: ToolService) {
         // render 用于样式修改
     }
 
@@ -67,6 +69,15 @@ export class ModalBasicComponent implements AfterViewInit {
             let content = container.querySelector('.app-modal-content');
             this.width = content.clientWidth;
         });
+        // this.toolService.run(() => {
+        //     let container = this.containerRef.element.nativeElement;
+        //     let content = container.querySelector('.app-modal-content');
+        //     return content;
+        // }, () => {
+        //     let container = this.containerRef.element.nativeElement;
+        //     let content = container.querySelector('.app-modal-content');
+        //     this.width = content.clientWidth;
+        // }, 100);
     }
 
     /**

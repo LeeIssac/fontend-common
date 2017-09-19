@@ -21,7 +21,7 @@
     transition: $transitionAll;
     position: relative;
     border: 1px solid $borderColor;
-    background: #fff;
+    // background: #fff;
     color: rgba(0, 0, 0, .65);
     &:hover {
         border-color: $backgroundColor;
@@ -29,8 +29,10 @@
     }
     &.primary {
         color: #fff;
-        border: 1px solid $backgroundColor;
-        background-color: $backgroundColor;
+        // border: 1px solid $backgroundColor;
+        // background-color: $backgroundColor;
+        border: 1px solid #073fb7;
+        background-color: #073fb7;
         &:hover {
             opacity: 0.8;
         }
@@ -78,6 +80,7 @@
             }
             .fa, .iconfont {
                 font-size: 16px;
+                color:#073fb7;
             }
         }
     }
@@ -91,6 +94,7 @@
             }
             .fa, .iconfont {
                 font-size: 12px;
+                color:#073fb7;
             }
         }
     }
@@ -425,4 +429,38 @@ textarea.input {
             background: #00A0E9;
         }
     }
+}
+.search-bar{
+  .btn{
+    font-size:16px;height:34px;
+    .iconfont{font-size:20px;vertical-align: text-top;}
+  }
+  .input-icon{
+    .input{
+      height: 26px;border-radius:4px;width:400px;text-shadow: none !important;
+    }
+    .iconfont{
+      font-size:18px;
+    }
+  }
+}
+.app-modal-content {
+  font-size:14px;
+  .app-modal-content-title{
+    .title{
+      font-size:18px;
+    }
+  }
+  .app-modal-btns{
+    button.btn{
+      background:#fff;
+      border:1px solid #CBCBCB;
+      color: rgba(0, 0, 0, 0.65);
+      &:hover{
+        background:#073fb7;
+        border-color:#073fb7;
+        color:#fff;
+      }
+    }
+  }
 }

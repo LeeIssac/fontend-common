@@ -3,7 +3,10 @@
  * 单选下拉框
  */
 
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from "@angular/core";
+import {
+    Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChange,
+    ViewChild
+} from "@angular/core";
 import {Animations} from "../../animations/animations";
 
 @Component({
@@ -12,7 +15,7 @@ import {Animations} from "../../animations/animations";
     styleUrls: ['./select.component.scss'],
     animations: [Animations.slideUpDwon]
 })
-export class SelectComponent implements OnInit {
+export class SelectComponent implements OnInit, OnChanges {
 
     @Input()
     option: any;       // 当前被选中的option
@@ -70,8 +73,17 @@ export class SelectComponent implements OnInit {
         this.position = this.position || 'bottom';
 
         // 非单一源 数据拷贝
-        if (!this.single) {
-            this.options = JSON.parse(JSON.stringify(this.options));
+        // if (!this.single) {
+        //     this.options = JSON.parse(JSON.stringify(this.options));
+        // }
+    }
+
+    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+        if (changes['options'] && changes['options'].currentValue) {
+            // 非单一源 数据拷贝
+            if (!this.single) {
+                this.options = JSON.parse(JSON.stringify(changes['options'].currentValue));
+            }
         }
     }
 

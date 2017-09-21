@@ -3,7 +3,7 @@
     bottom: 40%;
     max-width: 500px;
     line-height: 40px;
-    background: rgba(255, 255,255, 0.7);
+    background: rgba(255, 255,255, 0.95);
     border-radius: 10px;
     box-shadow:0 2px 16px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.30), 0 0 1px rgba(0, 0, 0, 0.30);
     text-align: center;
@@ -11,7 +11,7 @@
     left: 50%;
     transform: translate(-50%,20%);
     min-width: 200px;
-    z-index: 11;
+    z-index: 100;
     .app-modal-alert-content {
         padding: 0 10px;
     }

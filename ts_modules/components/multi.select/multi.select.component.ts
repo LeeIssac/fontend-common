@@ -3,7 +3,7 @@
  *  多选下拉框
  */
 
-import {Component, EventEmitter, Input, OnInit, Output, Renderer2} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output, Renderer2, OnChanges, SimpleChange} from "@angular/core";
 import {Animations} from "../../animations/animations";
 
 @Component({
@@ -12,7 +12,7 @@ import {Animations} from "../../animations/animations";
     styleUrls: ['./multi.select.component.scss'],
     animations: [Animations.slideUpDwon]
 })
-export class MultiSelectComponent implements OnInit {
+export class MultiSelectComponent implements OnInit, OnChanges {
 
     @Input()
     option: any;       // 当前被选中的options
@@ -50,10 +50,16 @@ export class MultiSelectComponent implements OnInit {
     ngOnInit() {
         this.label = this.label || 'name';
         this.position = this.position || 'bottom';
+    }
 
-        // 非单一源 数据拷贝
-        if (!this.single) {
-            this.options = JSON.parse(JSON.stringify(this.options));
+    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+        if (changes['options'] && changes['options'].currentValue) {
+            // 非单一源 数据拷贝
+            if (!this.single) {
+                setTimeout(() => {
+                    this.options = JSON.parse(JSON.stringify(this.options));
+                });
+            }
         }
     }
 

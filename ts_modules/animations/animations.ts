@@ -54,6 +54,10 @@ export class Animations {
         ]);
     }
 
+    /**
+     * 路由变化
+     * @type {AnimationTriggerMetadata}
+     */
     static routeAnimation: AnimationEntryMetadata = trigger('routerAnimation', [
         transition('* => *', [
             query(':enter', style({ position: 'fixed', right: '10px', left: '210px'}), { optional: true }),
@@ -67,6 +71,21 @@ export class Animations {
                     animate('250ms 50ms ease-in-out', style({ opacity: 1 }))
                 ], { optional: true }),
             ])
+        ])
+    ]);
+
+    /**
+     * 向左滑动弹出
+     * @type {AnimationTriggerMetadata}
+     */
+    static slideLeft = trigger('slideLeft', [
+        transition(':enter', [
+            style({transform: 'translateX(100%)'}),
+            animate('200ms ease', style({transform: 'translateX(0)'}))
+        ]),
+        transition(':leave', [
+            style({transform: 'translateX(0)'}),
+            animate('200ms ease', style({transform: 'translateX(100%)'}))
         ])
     ]);
 

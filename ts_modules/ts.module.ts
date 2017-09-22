@@ -18,6 +18,7 @@ import {ShowDirective} from "./directives/show/show.directive";
 import {ToolService} from "./services/tool.service";
 import {SizePipe} from "./pipe/size.pipe";
 import {SubstrPipe} from "./pipe/string.pipe";
+import {ModalSlotComponent} from "./services/modal.service/components/slot/modal.slot.component";
 
 @NgModule({
     imports: [
@@ -42,6 +43,8 @@ import {SubstrPipe} from "./pipe/string.pipe";
     exports: [
         PaginationComponent,
         SelectComponent,
+        MultiSelectComponent,
+        ModalSlotComponent,
         DatePipe,
         SizePipe,
         SubstrPipe,

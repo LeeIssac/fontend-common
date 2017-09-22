@@ -71,18 +71,15 @@ export class SelectComponent implements OnInit, OnChanges {
     ngOnInit() {
         this.label = this.label || 'name';
         this.position = this.position || 'bottom';
-
-        // 非单一源 数据拷贝
-        // if (!this.single) {
-        //     this.options = JSON.parse(JSON.stringify(this.options));
-        // }
     }
 
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
         if (changes['options'] && changes['options'].currentValue) {
             // 非单一源 数据拷贝
             if (!this.single) {
-                this.options = JSON.parse(JSON.stringify(changes['options'].currentValue));
+                setTimeout(() => {
+                    this.options = JSON.parse(JSON.stringify(changes['options'].currentValue));
+                });
             }
         }
     }

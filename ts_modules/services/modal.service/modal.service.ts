@@ -72,7 +72,7 @@ export class ModalService {
      * @param message 显示的消息
      * @param time 保留时间，超过时间自动小时
      */
-    alert(message: string, time: number = 4000) {
+    alert(message: string, time: number = 2000) {
         let factory = this.componentFactoryResolver.resolveComponentFactory(ModalAlertComponent);
         let newNode = document.createElement(factory.selector);
 

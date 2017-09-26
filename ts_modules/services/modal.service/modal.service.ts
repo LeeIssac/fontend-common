@@ -70,9 +70,10 @@ export class ModalService {
     /**
      * 弹出提示pop
      * @param message 显示的消息
+     * @param alertType 显示从哪个位置出来
      * @param time 保留时间，超过时间自动小时
      */
-    alert(message: string, time: number = 4000) {
+    alert(message: string, alertType: string = 'bottomCenter', time: number = 5000) {
         let factory = this.componentFactoryResolver.resolveComponentFactory(ModalAlertComponent);
         let newNode = document.createElement(factory.selector);
 
@@ -82,6 +83,7 @@ export class ModalService {
         let ins = ref.instance;
         ins.message = message;
         ins.isShow = true;
+        ins.alertType = alertType;
 
         this.applicationRef.attachView(ref.hostView);
         ref.changeDetectorRef.detectChanges();

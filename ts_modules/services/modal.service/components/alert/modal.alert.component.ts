@@ -28,6 +28,9 @@ export class ModalAlertComponent {
     // 显示的消息内容
     message: string;
 
+    // 提示出现的位置类型
+    alertType: string;
+
     // 消失毫秒数
     time: number;
 

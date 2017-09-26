@@ -56,13 +56,14 @@
         &.only {
             padding: 0;
             border-radius: 50%;
-            width: 28px;
+            width: 26px;
+            height: 26px;
             .fa, .iconfont {
                 margin-right: 0;
             }
         }
         .fa, .iconfont {
-            font-size: 14px;
+            font-size: 17px;
             margin-right: 2px;
             color: rgba(0, 0, 0, .45);
             transition: $transitionAll;

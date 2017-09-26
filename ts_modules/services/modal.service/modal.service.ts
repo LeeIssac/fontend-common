@@ -60,7 +60,7 @@ export class ModalService {
      * @returns {any} 自定义模态框组件的引用
      */
     open(content: any, options: ModalOptions = {}) {
-        // 初始化根组件
+        // 初始化根组件  解构赋值
         let [contentRef, modalComponentRef] = this.getModalComponentRef(options, ModalBasicComponent);
 
         // 初始化内容组件

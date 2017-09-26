@@ -15,4 +15,10 @@ export class RegExgConstant {
 
     // 中文
     static chinese = new RegExp('[\\u4E00-\\u9FFF]+', 'g');
+
+    // 去掉前后空格（表单用，暂未确定具体校验规则）
+    static  deleteSpace = /(^\s*)|(\s*$)/g;
+
+    // 手机号
+    static cellPhone = /^1[3|4|5|7|8]\d{9}$/g;
 }

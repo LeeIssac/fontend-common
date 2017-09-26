@@ -1,4 +1,13 @@
-<div class="app-modal-alert-container" #container [@slideInOut] *ngIf="isShow">
+<div class="app-modal-alert-container" #container [@slideInOut]
+     [class.leftcenter]="alertType === 'leftCenter'"
+     [class.rightcenter]="alertType === 'rightCenter'"
+     [class.topcenter]="alertType === 'topCenter'"
+     [class.bottomcenter]="alertType === 'bottomCenter'"
+     [class.lefttop]="alertType === 'leftTop'"
+     [class.righttop]="alertType === 'rightTop'"
+     [class.leftbottom]="alertType === 'leftBottom'"
+     [class.rightbottom]="alertType === 'rightBottom'"
+     *ngIf="isShow" >
     <div class="app-modal-alert-content">
         <span>{{ message }}</span>
     </div>

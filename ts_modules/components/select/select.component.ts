@@ -95,10 +95,12 @@ export class SelectComponent implements OnInit, OnChanges {
         this.showDown = !this.showDown;
 
         if (this.showDown) {
-            this.backgroundClickRef = this.render.listen('document', 'click', () => {
-                this.showDown = false;
-                this.backgroundClickRef();
-                this.backgroundClickRef = null;
+            setTimeout(() => {
+                this.backgroundClickRef = this.render.listen('document', 'click', () => {
+                    this.showDown = false;
+                    this.backgroundClickRef();
+                    this.backgroundClickRef = null;
+                });
             });
         } else {
             this.backgroundClickRef && this.backgroundClickRef();
@@ -107,7 +109,7 @@ export class SelectComponent implements OnInit, OnChanges {
 
         this.deleteSearchInput();
 
-        $event.stopPropagation();
+        // $event.stopPropagation();
     }
 
     /**

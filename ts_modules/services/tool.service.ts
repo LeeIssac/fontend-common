@@ -113,6 +113,16 @@ export class ToolService {
     };
 
     /**
+     * 滚动到底部
+     * @param element
+     */
+    scrollBottom = function (element) {
+        if (element) {
+            element.scrollTop = element.scrollHeight;
+        }
+    };
+
+    /**
      * 获取32位uuid
      * @param len 长度
      * @param radix 基数

@@ -74,17 +74,17 @@ export class MultiSelectComponent implements OnInit, OnChanges {
         this.showDown = !this.showDown;
 
         if (this.showDown) {
-            this.backgroundClickRef = this.render.listen('document', 'click', () => {
-                this.showDown = false;
-                this.backgroundClickRef();
-                this.backgroundClickRef = null;
+            setTimeout(() => {
+                this.backgroundClickRef = this.render.listen('document', 'click', () => {
+                    this.showDown = false;
+                    this.backgroundClickRef();
+                    this.backgroundClickRef = null;
+                });
             });
         } else {
             this.backgroundClickRef && this.backgroundClickRef();
             this.backgroundClickRef = null;
         }
-
-        $event.stopPropagation();
     }
 
     /**

@@ -76,8 +76,9 @@ export class ModalService {
     alert(message: string, alertType: string = 'bottomCenter', time: number = 5000) {
         let factory = this.componentFactoryResolver.resolveComponentFactory(ModalAlertComponent);
         let newNode = document.createElement(factory.selector);
-
-        document.body.appendChild(newNode);
+        // 避免重复出现多个弹框重叠
+        let elems = document.getElementsByClassName('app-modal-alert-container');
+        elems.length === 0 && document.body.appendChild(newNode);
 
         let ref = factory.create(this.injector, [], newNode);
         let ins = ref.instance;

@@ -60,7 +60,7 @@ export class ModalService {
      * @returns {any} 自定义模态框组件的引用
      */
     open(content: any, options: ModalOptions = {}) {
-        // 初始化根组件
+        // 初始化根组件  解构赋值
         let [contentRef, modalComponentRef] = this.getModalComponentRef(options, ModalBasicComponent);
 
         // 初始化内容组件
@@ -76,8 +76,9 @@ export class ModalService {
     alert(message: string, alertType: string = 'bottomCenter', time: number = 5000) {
         let factory = this.componentFactoryResolver.resolveComponentFactory(ModalAlertComponent);
         let newNode = document.createElement(factory.selector);
-
-        document.body.appendChild(newNode);
+        // 避免重复出现多个弹框重叠
+        let elems = document.getElementsByClassName('app-modal-alert-container');
+        elems.length === 0 && document.body.appendChild(newNode);
 
         let ref = factory.create(this.injector, [], newNode);
         let ins = ref.instance;

@@ -16,8 +16,15 @@ export class RegExgConstant {
     // 中文
     static chinese = new RegExp('[\\u4E00-\\u9FFF]+', 'g');
 
+    // 不能是中文
+    static faultChinese = /^[^\u4e00-\u9fa5]{0,}$/;
+
     // 字母开头的数字或字母
     static numberAlphabet = /^[a-zA-Z][0-9a-zA-Z]{0,}$/;
+
+    // 只能是数字加字母
+    static chartable = /^[0-9a-zA-Z]{0,}$/;
+
 
     // 仅为数字且不以0开头
     static positiveInteger = /^[1-9][0-9]*$/;

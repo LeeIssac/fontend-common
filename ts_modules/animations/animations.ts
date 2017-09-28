@@ -89,5 +89,19 @@ export class Animations {
         ])
     ]);
 
+    /**
+     * 向上滑动弹出
+     * @type {AnimationTriggerMetadata}
+     */
+    static slideBottom = trigger('slideBottom', [
+        transition(':enter', [
+            style({transform: 'translateY(100%)'}),
+            animate('200ms ease', style({transform: 'translateY(0)'}))
+        ]),
+        transition(':leave', [
+            style({transform: 'translateY(0)'}),
+            animate('200ms ease', style({transform: 'translateY(100%)'}))
+        ])
+    ]);
 
 }

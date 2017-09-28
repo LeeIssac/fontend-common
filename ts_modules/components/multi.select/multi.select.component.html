@@ -12,7 +12,7 @@
             <ul>
                 <li *ngFor="let op of options"
                     (click)="optionClick(op, $event)"
-                    [class.checked]="op.checked">
+                    [class.checked]="getOpChecked(op)">
                     <span>{{op[label]}}</span>
                 </li>
             </ul>

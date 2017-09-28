@@ -120,6 +120,9 @@ export class MultiSelectComponent implements OnInit, OnChanges {
         $event.stopPropagation();
     }
 
+    /**
+     * 发送事件
+     */
     sendEmit() {
         if (this.index !== undefined) {
             this.callback.emit({
@@ -129,5 +132,19 @@ export class MultiSelectComponent implements OnInit, OnChanges {
         } else {
             this.callback.emit(this.option);
         }
+    }
+
+    /**
+     * 返回当前的option是否被选中
+     */
+    getOpChecked(op) {
+        let find = false;
+        this.option.forEach(o => {
+            if (o[this.label] === op[this.label]) {
+                op.checked = true;
+                find = true;
+            }
+        });
+        return find;
     }
 }

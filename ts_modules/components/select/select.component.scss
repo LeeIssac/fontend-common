@@ -21,6 +21,9 @@
         transition: $transitionAll;
         //color: rgba(0, 0, 0, .45);
         color: rgba(0, 0, 0, 1);
+        .placeholder {
+            color: rgba(0, 0, 0, 0.45);
+        }
         &.showDown {
             border-color: $backgroundColor;
             color: $backgroundColor;

@@ -73,7 +73,7 @@ export class ModalService {
      * @param alertType 显示从哪个位置出来
      * @param time 保留时间，超过时间自动小时
      */
-    alert(message: string, alertType: string = 'bottomCenter', time: number = 5000) {
+    alert(message: string, alertType: string = 'bottomCenter', time: number = 2000) {
         let factory = this.componentFactoryResolver.resolveComponentFactory(ModalAlertComponent);
         let newNode = document.createElement(factory.selector);
         // 避免重复出现多个弹框重叠

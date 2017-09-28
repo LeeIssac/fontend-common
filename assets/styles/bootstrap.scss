@@ -138,10 +138,14 @@
     height: 18px;
     font-size: 12px;
     line-height: 1.5;
-    color: rgba(0, 0, 0, .65);
+    //color: rgba(0, 0, 0, .65);
+    color: rgba(0, 0, 0, 1);
     border: 1px solid $borderColor;
     border-radius: $borderRradius;
     transition: $transitionAll;
+    &[disabled]{
+        color: rgba(0, 0, 0, .25);
+    }
     &::-moz-placeholder {
         color: rgba(0, 0, 0, .45);
         opacity: 1

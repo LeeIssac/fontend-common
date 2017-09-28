@@ -19,7 +19,8 @@
         border-radius: $borderRradius;
         border: 1px solid $borderColor;
         transition: $transitionAll;
-        color: rgba(0, 0, 0, .45);
+        //color: rgba(0, 0, 0, .45);
+        color: rgba(0, 0, 0, 1);
         &.showDown {
             border-color: $backgroundColor;
             color: $backgroundColor;

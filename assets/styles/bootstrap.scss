@@ -143,6 +143,9 @@
     border: 1px solid $borderColor;
     border-radius: $borderRradius;
     transition: $transitionAll;
+    &[disabled]{
+        color: rgba(0, 0, 0, .25);
+    }
     &::-moz-placeholder {
         color: rgba(0, 0, 0, .45);
         opacity: 1

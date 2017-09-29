@@ -135,7 +135,7 @@ export class MultiSelectComponent implements OnInit, OnChanges {
     }
 
     /**
-     * 返回当前的option是否被选中
+     * 返回当前的option是否添加checked状态
      */
     getOpChecked(op) {
         let find = false;

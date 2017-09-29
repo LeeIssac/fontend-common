@@ -4,7 +4,7 @@
  */
 
 import {
-    Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChange,
+    Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChange,
     ViewChild
 } from "@angular/core";
 import {Animations} from "../../animations/animations";
@@ -15,7 +15,7 @@ import {Animations} from "../../animations/animations";
     styleUrls: ['./select.component.scss'],
     animations: [Animations.slideUpDwon]
 })
-export class SelectComponent implements OnInit, OnChanges {
+export class SelectComponent implements OnInit, OnChanges, OnDestroy {
 
     @Input()
     option: any;       // 当前被选中的option
@@ -80,7 +80,26 @@ export class SelectComponent implements OnInit, OnChanges {
                 setTimeout(() => {
                     this.options = JSON.parse(JSON.stringify(changes['options'].currentValue));
                 });
+            } else {
+                if (this.option) {
+                    this.options.forEach(op => {
+                        if (op[this.label] === this.option[this.label]) {
+                            op.checked = true;
+                        }
+                    });
+                }
             }
+        }
+    }
+
+    ngOnDestroy() {
+        // 如果是single状态 默认认为删除了组件就把选中状态还原
+        if (this.single && this.option) {
+            this.options.forEach(op => {
+                if (op[this.label] === this.option[this.label]) {
+                    op.checked = false;
+                }
+            });
         }
     }
 

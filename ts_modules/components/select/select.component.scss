@@ -19,8 +19,7 @@
         border-radius: $borderRradius;
         border: 1px solid $borderColor;
         transition: $transitionAll;
-        //color: rgba(0, 0, 0, .45);
-        color: rgba(0, 0, 0, 1);
+        color: rgba(0, 0, 0, .85);
         .placeholder {
             color: rgba(0, 0, 0, 0.45);
         }

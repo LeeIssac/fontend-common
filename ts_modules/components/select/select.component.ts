@@ -71,7 +71,6 @@ export class SelectComponent implements OnInit, OnChanges {
     ngOnInit() {
         this.label = this.label || 'name';
         this.position = this.position || 'bottom';
-        console.log(this.option);
     }
 
     ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {

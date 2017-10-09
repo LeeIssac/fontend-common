@@ -24,6 +24,9 @@ export class MultiSelectComponent implements OnInit, OnChanges {
     label: any;        // 显示的key
 
     @Input()
+    type: any;         // 类型
+
+    @Input()
     disabled: boolean; // 是否禁用
 
     @Input()
@@ -127,7 +130,8 @@ export class MultiSelectComponent implements OnInit, OnChanges {
         if (this.index !== undefined) {
             this.callback.emit({
                 checked: this.option,
-                index: this.index
+                index: this.index,
+                type: this.type
             });
         } else {
             this.callback.emit(this.option);
@@ -135,7 +139,7 @@ export class MultiSelectComponent implements OnInit, OnChanges {
     }
 
     /**
-     * 返回当前的option是否被选中
+     * 返回当前的option是否添加checked状态
      */
     getOpChecked(op) {
         let find = false;

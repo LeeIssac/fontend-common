@@ -20,6 +20,7 @@
         border: 1px solid $borderColor;
         transition: $transitionAll;
         color: rgba(0, 0, 0, .85);
+        cursor: default;
         .placeholder {
             color: rgba(0, 0, 0, 0.45);
         }
@@ -86,6 +87,7 @@
         li {
             padding: 3px 7px;
             transition: $transitionAll;
+            cursor: default;
             &:hover, &.checked {
                 background: rgba(236, 246, 253, .8);
             }

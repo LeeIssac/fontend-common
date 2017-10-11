@@ -1,212 +1,226 @@
 .app-modal-alert-container {
-    position: absolute;
-    max-width: 500px;
-    line-height: 40px;
-    background: rgba(255, 255,255, 0.95);
-    border-radius: 10px;
-    box-shadow:0 2px 16px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.30), 0 0 1px rgba(0, 0, 0, 0.30);
-    text-align: center;
-    color: #333;
-    min-width: 200px;
-    z-index: 100;
-    .app-modal-alert-content {
-        padding: 0 10px;
-    }
-    //左边到中间
-    &.leftcenter {
-        -webkit-animation-name: leftCenter; /*动画名称*/
-        -webkit-animation-duration: 0.3s; /*动画持续时间*/
-        -webkit-animation-iteration-count: 1; /*动画次数*/
-        -webkit-animation-delay: 0s; /*延迟时间*/
-        animation-fill-mode:forwards;
-        left: 45%;
-        bottom: 50%;
-        opacity: 1;
-    }
-    @-webkit-keyframes leftCenter {
-        0% {
-            left: 3%;
-            bottom: 50%;
-            opacity: 0; /*初始状态 透明度为0*/
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 13;
+    background-color: rgba(255, 255, 255, 0);
+    .app-modal-alert-content-box {
+        position: absolute;
+        max-width: 500px;
+        line-height: 40px;
+        background: rgba(255, 255,255, 0.95);
+        border-radius: 10px;
+        box-shadow:0 2px 16px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.30), 0 0 1px rgba(0, 0, 0, 0.30);
+        text-align: center;
+        color: #333;
+        min-width: 200px;
+        z-index: 100;
+        .app-modal-alert-content {
+            padding: 0 10px;
         }
-
-        100% {
-            left: 45%;
-            bottom: 50%;
-            opacity: 1; /*结尾状态 透明度为1*/
-
+        //左边到中间
+        &.leftcenter {
+            -webkit-animation-name: leftCenter; /*动画名称*/
+            -webkit-animation-duration: 0.3s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+            animation-fill-mode:forwards;
+            transform: translate(-15%,99%);
+            left: 50%;
+            top: 40%;
+            opacity: 1;
         }
-    }
-    //右边到中间
-    &.rightcenter {
-        -webkit-animation-name: rightCenter; /*动画名称*/
-        -webkit-animation-duration: 0.3s; /*动画持续时间*/
-        -webkit-animation-iteration-count: 1; /*动画次数*/
-        -webkit-animation-delay: 0s; /*延迟时间*/
-        animation-fill-mode:forwards;
-        right: 45%;
-        bottom: 50%;
-        opacity: 1;
-    }
-    @-webkit-keyframes rightCenter {
-        0% {
-            right: 3%;
-            bottom: 50%;
-            opacity: 0; /*初始状态 透明度为0*/
-        }
+        @-webkit-keyframes leftCenter {
+            0% {
+                left: 3%;
+                top: 40%;
+                opacity: 0; /*初始状态 透明度为0*/
+            }
 
-        100% {
+            100% {
+                left: 50%;
+                top: 40%;
+                opacity: 1; /*结尾状态 透明度为1*/
+
+            }
+        }
+        //右边到中间
+        &.rightcenter {
+            -webkit-animation-name: rightCenter; /*动画名称*/
+            -webkit-animation-duration: 0.3s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+            animation-fill-mode:forwards;
+            transform: translate(-80%,99%);
             right: 45%;
             bottom: 50%;
-            opacity: 1; /*结尾状态 透明度为1*/
-
+            opacity: 1;
         }
-    }
-    //顶部到中间
-    &.topcenter {
-        -webkit-animation-name: topCenter; /*动画名称*/
-        -webkit-animation-duration: 0.3s; /*动画持续时间*/
-        -webkit-animation-iteration-count: 1; /*动画次数*/
-        -webkit-animation-delay: 0s; /*延迟时间*/
-        animation-fill-mode:forwards;
-        left: 45%;
-        top:45%;
-        opacity: 1;
-    }
-    @-webkit-keyframes topCenter {
-        0% {
-            left: 45%;
-            top:3%;
-            opacity: 0; /*初始状态 透明度为0*/
-        }
+        @-webkit-keyframes rightCenter {
+            0% {
+                right: 3%;
+                bottom: 50%;
+                opacity: 0; /*初始状态 透明度为0*/
+            }
 
-        100% {
-            left: 45%;
-            top: 45%;
-            opacity: 1; /*结尾状态 透明度为1*/
+            100% {
+                right: 45%;
+                bottom: 50%;
+                opacity: 1; /*结尾状态 透明度为1*/
 
+            }
         }
-    }
-    //底部到中间
-    &.bottomcenter {
-        -webkit-animation-name: bottomCenter; /*动画名称*/
-        -webkit-animation-duration: 0.3s; /*动画持续时间*/
-        -webkit-animation-iteration-count: 1; /*动画次数*/
-        -webkit-animation-delay: 0s; /*延迟时间*/
-        animation-fill-mode:forwards;
-        left: 45%;
-        bottom: 50%;
-        opacity: 1;
-    }
-    @-webkit-keyframes bottomCenter {
-        0% {
-            left: 45%;
-            bottom: 3%;
-            opacity: 0; /*初始状态 透明度为0*/
+        //顶部到中间
+        &.topcenter {
+            -webkit-animation-name: topCenter; /*动画名称*/
+            -webkit-animation-duration: 0.3s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+            animation-fill-mode:forwards;
+            transform: translate(-50%,150%);
+            left: 50%;
+            top:45%;
+            opacity: 1;
         }
+        @-webkit-keyframes topCenter {
+            0% {
+                left: 50%;
+                top:3%;
+                opacity: 0; /*初始状态 透明度为0*/
+            }
 
-        100% {
-            left: 45%;
+            100% {
+                left: 50%;
+                top: 45%;
+                opacity: 1; /*结尾状态 透明度为1*/
+
+            }
+        }
+        //底部到中间
+        &.bottomcenter {
+            -webkit-animation-name: bottomCenter; /*动画名称*/
+            -webkit-animation-duration: 0.3s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+            animation-fill-mode:forwards;
+            left: 50%;
+            transform: translate(-50%,20%);
             bottom: 50%;
-            opacity: 1; /*结尾状态 透明度为1*/
-
+            opacity: 1;
         }
-    }
+        @-webkit-keyframes bottomCenter {
+            0% {
+                left: 50%;
+                bottom: 3%;
+                opacity: 0; /*初始状态 透明度为0*/
+            }
 
-    //左上角
-    &.lefttop {
-        -webkit-animation-name: leftTop; /*动画名称*/
-        -webkit-animation-duration: 0.3s; /*动画持续时间*/
-        -webkit-animation-iteration-count: 1; /*动画次数*/
-        -webkit-animation-delay: 0s; /*延迟时间*/
-        animation-fill-mode:forwards;
-        left: 0;
-        top:0;
-        opacity: 1;
-    }
-    @-webkit-keyframes leftTop {
-        0% {
+            100% {
+                left: 50%;
+                bottom: 50%;
+                opacity: 1; /*结尾状态 透明度为1*/
+
+            }
+        }
+
+        //左上角
+        &.lefttop {
+            -webkit-animation-name: leftTop; /*动画名称*/
+            -webkit-animation-duration: 0.3s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+            animation-fill-mode:forwards;
             left: 0;
             top:0;
-            opacity: 0; /*初始状态 透明度为0*/
+            opacity: 1;
+        }
+        @-webkit-keyframes leftTop {
+            0% {
+                left: 0;
+                top:0;
+                opacity: 0; /*初始状态 透明度为0*/
+            }
+
+            100% {
+                left: 0;
+                top:0;
+                opacity: 1; /*结尾状态 透明度为1*/
+            }
         }
 
-        100% {
-            left: 0;
-            top:0;
-            opacity: 1; /*结尾状态 透明度为1*/
-        }
-    }
-
-    //右上角
-    &.righttop {
-        -webkit-animation-name: rightTop; /*动画名称*/
-        -webkit-animation-duration: 0.3s; /*动画持续时间*/
-        -webkit-animation-iteration-count: 1; /*动画次数*/
-        -webkit-animation-delay: 0s; /*延迟时间*/
-        animation-fill-mode:forwards;
-        right: 0;
-        top:0;
-        opacity: 1;
-    }
-    @-webkit-keyframes rightTop {
-        0% {
+        //右上角
+        &.righttop {
+            -webkit-animation-name: rightTop; /*动画名称*/
+            -webkit-animation-duration: 0.3s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+            animation-fill-mode:forwards;
             right: 0;
             top:0;
-            opacity: 0; /*初始状态 透明度为0*/
+            opacity: 1;
         }
-        100% {
-            right: 0;
-            top:0;
-            opacity: 1; /*结尾状态 透明度为1*/
+        @-webkit-keyframes rightTop {
+            0% {
+                right: 0;
+                top:0;
+                opacity: 0; /*初始状态 透明度为0*/
+            }
+            100% {
+                right: 0;
+                top:0;
+                opacity: 1; /*结尾状态 透明度为1*/
+            }
         }
-    }
 
-    //左下角
-    &.leftbottom {
-        -webkit-animation-name: leftBottom; /*动画名称*/
-        -webkit-animation-duration: 0.3s; /*动画持续时间*/
-        -webkit-animation-iteration-count: 1; /*动画次数*/
-        -webkit-animation-delay: 0s; /*延迟时间*/
-        animation-fill-mode:forwards;
-        left: 0;
-        bottom:0;
-        opacity: 1;
-    }
-    @-webkit-keyframes leftBottom {
-        0% {
+        //左下角
+        &.leftbottom {
+            -webkit-animation-name: leftBottom; /*动画名称*/
+            -webkit-animation-duration: 0.3s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+            animation-fill-mode:forwards;
             left: 0;
             bottom:0;
-            opacity: 0; /*初始状态 透明度为0*/
+            opacity: 1;
         }
-        100% {
-            left: 0;
-            bottom:0;
-            opacity: 1; /*结尾状态 透明度为1*/
+        @-webkit-keyframes leftBottom {
+            0% {
+                left: 0;
+                bottom:0;
+                opacity: 0; /*初始状态 透明度为0*/
+            }
+            100% {
+                left: 0;
+                bottom:0;
+                opacity: 1; /*结尾状态 透明度为1*/
+            }
         }
-    }
-    //右下角
-    &.rightbottom {
-        -webkit-animation-name: rightBottom; /*动画名称*/
-        -webkit-animation-duration: 0.3s; /*动画持续时间*/
-        -webkit-animation-iteration-count: 1; /*动画次数*/
-        -webkit-animation-delay: 0s; /*延迟时间*/
-        animation-fill-mode:forwards;
-        right: 0;
-        bottom:0;
-        opacity: 1;
-    }
-    @-webkit-keyframes rightBottom {
-        0% {
+        //右下角
+        &.rightbottom {
+            -webkit-animation-name: rightBottom; /*动画名称*/
+            -webkit-animation-duration: 0.3s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+            animation-fill-mode:forwards;
             right: 0;
             bottom:0;
-            opacity: 0; /*初始状态 透明度为0*/
+            opacity: 1;
         }
-        100% {
-            right: 0;
-            bottom:0;
-            opacity: 1; /*结尾状态 透明度为1*/
+        @-webkit-keyframes rightBottom {
+            0% {
+                right: 0;
+                bottom:0;
+                opacity: 0; /*初始状态 透明度为0*/
+            }
+            100% {
+                right: 0;
+                bottom:0;
+                opacity: 1; /*结尾状态 透明度为1*/
+            }
         }
-    }
 
+    }
 }
+

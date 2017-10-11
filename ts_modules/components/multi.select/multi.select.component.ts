@@ -96,7 +96,9 @@ export class MultiSelectComponent implements OnInit, OnChanges {
      * @param $event
      */
     optionClick(option: any, $event: MouseEvent) {
-        if (!option.checked) {
+        // 这里修改了一下逻辑，先在this.option里找一下存在与否，不存在就添加
+        let find = this.option.filter(op => op[this.label] === option[this.label]);
+        if (!find.length) {
             option.checked = true;
             this.option.push(option);
             this.sendEmit();

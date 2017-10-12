@@ -81,7 +81,7 @@ export class SelectComponent implements OnInit, OnChanges, OnDestroy {
                     this.options = JSON.parse(JSON.stringify(changes['options'].currentValue));
                 });
             } else {
-                if (this.option) {
+                if (this.option && this.options) {
                     this.options.forEach(op => {
                         if (op[this.label] === this.option[this.label]) {
                             op.checked = true;

@@ -9,7 +9,7 @@
     <div class="down"
          *ngIf="showDown"
          [class.pos-top]="position==='top'"
-         [class.pos-bottom]="position==='bottom'">
+         [class.pos-bottom]="position==='bottom'" [@slideUpDwon]>
         <div class="search"
              (click)="searchClick($event)"
              *ngIf="search"

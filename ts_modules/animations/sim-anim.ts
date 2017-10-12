@@ -17,7 +17,7 @@ const styles = {
     stepEnd: time + ' step-end',
     easeInOut: time + ' ease-in-out',
     faseOutSlowIn: time + ' cubic-bezier(0.4, 0, 0.2, 1)',
-    inOutBack: time + ' cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+    inOutBack: time + ' cubic-bezier(0.68, -0.55, 0.27, 1)',
     inOutCubic: time + ' cubic-bezier(0.65, 0.05, 0.36, 1)',
     inOutQuadratic: time + ' cubic-bezier(0.46, 0.03, 0.52, 0.96)',
     inOutSine: time + ' cubic-bezier(0.45, 0.05, 0.55, 0.95)'

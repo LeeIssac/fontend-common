@@ -34,8 +34,14 @@ export class ModalAlertComponent {
     // 消失毫秒数
     time: number;
 
+    // alert的背景颜色
+    bgColor: any;
+
     // 容器节点引用 动态改变z-index的时候需要
     @ViewChild('container', {read: ViewContainerRef}) containerRef;
 
-    constructor(private render: Renderer2) {}
+    constructor(private render: Renderer2) {
+
+    }
+
 }

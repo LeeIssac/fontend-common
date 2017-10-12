@@ -39,5 +39,5 @@ export class RegExgConstant {
     static  deleteSpace = /(^\s*)|(\s*$)/g;
 
     // 手机号
-    static cellPhone = /^1[3|4|5|7|8]\d{9}$/g;
+    static cellPhone = /^1[3|4|5|7|8]\d{9}$/;
 }

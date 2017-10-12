@@ -5,12 +5,13 @@
 
 import {Component, EventEmitter, Input, OnInit, Output, Renderer2, OnChanges, SimpleChange} from "@angular/core";
 import {Animations} from "../../animations/animations";
+import {stretch, shrink} from "../../animations/sim-anim";
 
 @Component({
     selector: 'multi-select-component',
     templateUrl: './multi.select.component.html',
     styleUrls: ['./multi.select.component.scss'],
-    animations: [Animations.slideUpDwon]
+    animations: [Animations.slideUpDwon, stretch, shrink]
 })
 export class MultiSelectComponent implements OnInit, OnChanges {
 

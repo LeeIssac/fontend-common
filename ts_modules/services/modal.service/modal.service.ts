@@ -39,6 +39,22 @@ export interface ModalOptions {
      * 标题
      */
     title?: string;
+
+    /**
+     * alert类型
+     */
+    alertType?: string;
+
+    /**
+     * alert时间
+     */
+    time?: number;
+
+    /**
+     * alert背景色
+     */
+    bgColor?: any;
+
 }
 
 @Injectable()
@@ -73,18 +89,23 @@ export class ModalService {
      * @param alertType 显示从哪个位置出来
      * @param time 保留时间，超过时间自动小时
      */
-    alert(message: string, alertType: string = 'bottomCenter', time: number = 2000) {
+    // alert(message: string, alertType: string = 'bottomCenter', time: number = 2000) {
+    alert(message: string, options: ModalOptions = {}) {
+        options.alertType = options.alertType || 'bottomCenter';
+        options.time = options.time || 2000;
+        options.bgColor = options.bgColor || 'rgba(0, 0, 0,0)';
         let factory = this.componentFactoryResolver.resolveComponentFactory(ModalAlertComponent);
         let newNode = document.createElement(factory.selector);
         // 避免重复出现多个弹框重叠
-        let elems = document.getElementsByClassName('app-modal-alert-container');
+        let elems = document.getElementsByClassName('app-modal-alert-content-box');
         elems.length === 0 && document.body.appendChild(newNode);
 
         let ref = factory.create(this.injector, [], newNode);
         let ins = ref.instance;
+        ins.bgColor = options.bgColor;
         ins.message = message;
         ins.isShow = true;
-        ins.alertType = alertType;
+        ins.alertType = options.alertType;
 
         this.applicationRef.attachView(ref.hostView);
         ref.changeDetectorRef.detectChanges();
@@ -94,7 +115,7 @@ export class ModalService {
             setTimeout(() => {
                 ref.destroy();
             }, 200);
-        }, time);
+        }, options.time);
     }
 
     /**

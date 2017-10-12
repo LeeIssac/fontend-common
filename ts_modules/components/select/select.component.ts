@@ -8,12 +8,13 @@ import {
     ViewChild
 } from "@angular/core";
 import {Animations} from "../../animations/animations";
+import {stretch, shrink} from "../../animations/sim-anim";
 
 @Component({
     selector: 'select-component',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss'],
-    animations: [Animations.slideUpDwon]
+    animations: [Animations.slideUpDwon, stretch, shrink]
 })
 export class SelectComponent implements OnInit, OnChanges, OnDestroy {
 

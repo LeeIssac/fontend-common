@@ -7,7 +7,7 @@
         </span>
         <span *ngIf="(!option || option.length <= 0)" [innerHTML]="placeholder || '&nbsp;'"></span>
     </div>
-    <div class="down" *ngIf="showDown" [class.pos-top]="position==='top'">
+    <div class="down" *ngIf="showDown" [class.pos-top]="position==='top'" @stretch @shrink>
         <div>
             <ul>
                 <li *ngFor="let op of options"

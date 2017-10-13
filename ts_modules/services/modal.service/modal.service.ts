@@ -36,17 +36,17 @@ export interface ModalOptions {
     showTitle?: boolean;
 
     /**
-     * 标题
+     * confirm标题
      */
     title?: string;
 
     /**
-     * alert类型
+     * alert弹出位置类型
      */
     alertType?: string;
 
     /**
-     * alert时间
+     * alert显示时间
      */
     time?: number;
 
@@ -87,13 +87,12 @@ export class ModalService {
      * 弹出提示pop
      * @param message 显示的消息
      * @param alertType 显示从哪个位置出来
-     * @param time 保留时间，超过时间自动小时
+     * @param time 保留时间，超过时间自动消失
      */
-    // alert(message: string, alertType: string = 'bottomCenter', time: number = 2000) {
     alert(message: string, options: ModalOptions = {}) {
         options.alertType = options.alertType || 'bottomCenter';
         options.time = options.time || 2000;
-        options.bgColor = options.bgColor || 'rgba(0, 0, 0,0)';
+        options.bgColor = options.bgColor || 'rgba(0, 0, 0, 0)';
         let factory = this.componentFactoryResolver.resolveComponentFactory(ModalAlertComponent);
         let newNode = document.createElement(factory.selector);
         // 避免重复出现多个弹框重叠
@@ -124,7 +123,7 @@ export class ModalService {
      * @param options
      * @returns {C}
      */
-    confrim(message: string, options: ModalOptions = {}) {
+    confirm(message: string, options: ModalOptions = {}) {
         options.title = options.title || '提示';
 
         let [ins, pIns] = this.open(ModalConfrimComponent, options);

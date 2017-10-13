@@ -24,39 +24,6 @@ export class Animations {
         ])
     ]);
 
-    static  slideShrink = trigger('slideShrink', [
-        // state('in', style({height: '*'})),
-        // transition('void => *', [
-        //     style({height: '*'}),
-        //     animate(250, style({height: 0}))
-        // ]),
-        // transition('* => void', [
-        //     style({height: '*'}),
-        //     animate(240, style({height: 0}))
-        // ])
-
-        state('true', style({height: '0'})),
-        state('false',   style({height: '0'})),
-        transition('true => false', animate('100ms ease-in')),
-        transition('false => true', animate('100ms ease-out')),
-        transition('void => true', [
-            style({height: '*'}),
-            animate(100)
-        ]),
-        transition('true => void', [
-            animate(100, style({height: '*'}))
-        ]),
-        transition('void => false', [
-            style({height: '*'}),
-            animate(200)
-        ]),
-        transition('false => void', [
-            animate(200, style({height: '0'}))
-        ])
-    ]);
-
-
-
     /**
      * 淡入淡出
      * @type {AnimationTriggerMetadata}

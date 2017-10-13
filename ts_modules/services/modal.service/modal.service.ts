@@ -40,6 +40,10 @@ export interface ModalOptions {
      */
     title?: string;
 
+
+
+}
+export interface AlertOptions {
     /**
      * alert弹出位置类型
      */
@@ -54,7 +58,6 @@ export interface ModalOptions {
      * alert背景色
      */
     bgColor?: any;
-
 }
 
 @Injectable()
@@ -86,10 +89,9 @@ export class ModalService {
     /**
      * 弹出提示pop
      * @param message 显示的消息
-     * @param alertType 显示从哪个位置出来
-     * @param time 保留时间，超过时间自动消失
+     * options.alertType 显示从哪个位置出来,options.time 保留时间，超过时间自动消失,options.bgColor背景色
      */
-    alert(message: string, options: ModalOptions = {}) {
+    alert(message: string, options: AlertOptions = {}) {
         options.alertType = options.alertType || 'bottomCenter';
         options.time = options.time || 2000;
         options.bgColor = options.bgColor || 'rgba(0, 0, 0, 0)';

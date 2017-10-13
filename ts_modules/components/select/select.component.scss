@@ -51,7 +51,7 @@
 
         overflow-y: hidden;
         &.pos-top {
-            bottom: calc(100% + 4px);
+            bottom: calc(100% + 10px);
         }
         &.pos-bottom {
             top: calc(100% + 10px);
@@ -77,7 +77,7 @@
             }
         }
         .search-blank {
-            height: 37px;
+            height: 38px;
         }
         .content {
             overflow-y: auto;

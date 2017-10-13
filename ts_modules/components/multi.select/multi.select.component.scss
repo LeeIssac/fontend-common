@@ -39,19 +39,22 @@
         max-height: 250px;
         position: absolute;
         width: 100%;
-        z-index: 10;
+        z-index: 10;background: #fff;
+        border-radius: $borderRradius;
+        box-shadow: 1px 0 5px rgba(0, 0, 0, .1),
+        -1px 0 5px rgba(0, 0, 0, .1);
+
+        overflow-y: hidden;
         &.pos-top {
             bottom: calc(100% + 10px);
+        }
+        &.pos-bottom {
+            top: calc(100% + 10px);
         }
         > div {
             overflow-y: auto;
             max-height: 300px;
-            background: #fff;
-            border-radius: $borderRradius;
-            box-shadow: 1px 0 5px rgba(0, 0, 0, .1),
-            -1px 0 5px rgba(0, 0, 0, .1);
             position: relative;
-            top: 5px;
         }
         li {
             padding: 3px 7px;

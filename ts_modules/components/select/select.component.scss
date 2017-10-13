@@ -21,6 +21,10 @@
         transition: $transitionAll;
         color: rgba(0, 0, 0, .85);
         cursor: default;
+        position: relative;
+        .item {
+            width: 80%;
+        }
         .placeholder {
             color: rgba(0, 0, 0, 0.45);
         }
@@ -37,6 +41,16 @@
             transition: all 0.2s ease;
             font-size: 12px;
             cursor: pointer;
+        }
+        .arrow {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        .clear {
+            position: absolute;
+            top: 5px;
+            right: 20px;
         }
     }
     .down {

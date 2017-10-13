@@ -2,7 +2,10 @@
     <div class="top clearfix"
          [class.showDown]="showDown"
          (click)="toggleShowDown($event)">
-        <span [innerHTML]="(option&&option[label]) || placeholder || '&nbsp;'"  [class.placeholder]="option && (option[label] === '' || option.name === '') || !option"></span>
+        <span class="item text-overflow"
+              [attr.title]="(option&&option[label]) || placeholder || '&nbsp;'"
+              [innerHTML]="(option&&option[label]) || placeholder || '&nbsp;'"
+              [class.placeholder]="option && (option[label] === '' || option.name === '') || !option"></span>
         <i class="iconfont arrow">&#xe62f;</i>
         <i class="iconfont clear" *ngIf="clear&&showDown" (click)="clearClick($event)">&#xe62b;</i>
     </div>

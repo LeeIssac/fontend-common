@@ -2,7 +2,7 @@
     <div class="top clearfix"
          (click)="toggleShowDown($event)">
         <span *ngFor="let op of option; let i = index;" class="item">
-            <span [innerHTML]="(op&&op[label]) || '&nbsp;'"></span>
+            <span [innerHTML]="(op&&op[label]) || '&nbsp;'" class="text-overflow"  [attr.title]="(op&&op[label]) || '&nbsp;'" ></span>
             <i class="iconfont close" (click)="deleteClick(op, i, $event)">&#xe62b;</i>
         </span>
         <span *ngIf="(!option || option.length <= 0)" [innerHTML]="placeholder || '&nbsp;'"></span>

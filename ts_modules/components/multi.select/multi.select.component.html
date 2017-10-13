@@ -13,7 +13,7 @@
                 <li *ngFor="let op of options"
                     (click)="optionClick(op, $event)"
                     [class.checked]="getOpChecked(op)">
-                    <span>{{op[label]}}</span>
+                    <span class="text-overflow" [attr.title]="op[label]" >{{op[label]}}</span>
                 </li>
             </ul>
         </div>

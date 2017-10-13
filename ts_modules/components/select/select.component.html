@@ -24,7 +24,7 @@
                     (click)="optionClick(op, $event)"
                     [class.checked]="op.checked"
                     [class.single]="op.checked&&single">
-                    <span>{{op[label]}}</span>
+                    <span class="text-overflow" [attr.title]="op[label]">{{op[label]}}</span>
                 </li>
             </ul>
         </div>

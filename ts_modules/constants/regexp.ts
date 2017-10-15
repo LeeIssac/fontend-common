@@ -26,8 +26,7 @@ export class RegExgConstant {
     static chartable = /^[0-9a-zA-Z]{0,}$/;
 
     // 用于建表的表名  全字母
-    static  tableReg = /^[a-zA-Z]{1,}$/;
-
+    static tableReg = /^[a-zA-Z]{1,}$/;
 
     // 仅为数字且不以0开头
     static positiveInteger = /^[1-9][0-9]*$/;

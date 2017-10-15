@@ -236,6 +236,8 @@ export class ModalService {
         modalComponentRef.instance.isShow = false;
 
         setTimeout(() => {
+            // 当点击组件的关闭按钮的时候 自动调用组件上的onDestroy方法
+            contentComponent && contentComponent.instance.onDestroy && contentComponent.instance.onDestroy();
             // contentComponent 可能为null， 比如alert组件就没有
             contentComponent && contentComponent.destroy();
             modalComponentRef.destroy();

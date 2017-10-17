@@ -4,12 +4,11 @@
     width: 100%;
     line-height: 20px;
     display: inline-block;
-    color: $textColor;
     position: relative;
     max-width: 100%;
     letter-spacing: 1px;
-    color: #333333;
     font-size: 14px;
+    color: #333333;
     &.disabled {
         .top {
             color: #CCCCCC;
@@ -18,7 +17,7 @@
         }
     }
     .top {
-        padding: 3px 7px;
+        padding: 5px 7px;
         border-radius: $borderRradius;
         border: 1px solid $borderColor;
         transition: $transitionAll;
@@ -28,8 +27,8 @@
         .item {
             width: 80%;
             display: inline-block;
-            height: 16px;
-            line-height: 16px;
+            height: 19px;
+            line-height: 19px;
             position: relative;
             top: 3px;
         }
@@ -37,8 +36,7 @@
             color: rgba(0, 0, 0, 0.45);
         }
         &.showDown {
-            border-color: $backgroundColor;
-            color: $backgroundColor;
+            border-color: #4499EE;
             .iconfont {
                 transform: rotate(180deg);
             }
@@ -52,12 +50,12 @@
         }
         .arrow {
             position: absolute;
-            top: 5px;
+            top: 7px;
             right: 5px;
         }
         .clear {
             position: absolute;
-            top: 5px;
+            top: 7px;
             right: 20px;
         }
     }
@@ -118,12 +116,11 @@
             }
             &.checked {
                 background: #fff;
-                color: #4499EE;
+                color: #CCCCCC;
                 cursor: not-allowed;
             }
             &.single {
-                //color: rgba(0, 0, 0, 0.25);
-                color: #4499EE;
+                color: #CCCCCC;
                 background: #fff;
                 cursor: not-allowed;
             }

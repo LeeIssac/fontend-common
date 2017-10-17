@@ -13,44 +13,44 @@
     cursor: pointer;
     white-space: nowrap;
     //line-height: 1.15;
+    height: 34px;
     padding: 0 15px;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: $borderRradius;
-    height: 28px;
     user-select: none;
-    transition: $transitionAll;
+    //transition: $transitionAll;
     position: relative;
-    border: 1px solid $borderColor;
-    background: #fff;
-    color: rgba(0, 0, 0, .65);
+    background-image: linear-gradient(-180deg, #EEF7FF 0%, #E1F0FF 96%);
+    border: 1px solid #CCDDEE;
+    color: #6688AA;
+    letter-spacing: 1px;
     &:hover {
-        border-color: $backgroundColor;
-        color: $backgroundColor;
+        background: #CCDDEE;
+        border: 1px solid #CCDDEE;
     }
-    &.primary {
-        color: #fff;
-        border: 1px solid $backgroundColor;
-        background-color: $backgroundColor;
-        &:hover {
-            opacity: 0.8;
-        }
-    }
-    &.disabled {
-        color: rgba(0, 0, 0, .25);
-        background-color: #f7f7f7;
-        border-color: $borderColor;
+    // 禁用状态（包含带icon的禁用）
+    &.disabled,&.icon.disabled {
+        background: #F5F5F5;
+        color: #CCCCCC;
         cursor: not-allowed;
+        border-color: transparent;
         .fa, .iconfont {
-            color: rgba(0, 0, 0, .25) !important;
+            color: #CCCCCC !important;
+            &:hover {
+                color: #CCCCCC !important;
+            }
         }
         &:hover {
-            opacity: 0.8;
+            color: #CCCCCC;
         }
     }
     &.icon {
+        .fa,.iconfont {
+            color: #4499EE;
+        }
         &:hover {
             .fa, .iconfont {
-                color: $backgroundColor;
+                color: #4499EE;
             }
         }
         &.only {
@@ -58,44 +58,43 @@
             border-radius: 50%;
             width: 26px;
             height: 26px;
+            border: 0;
+            background: transparent;
+            &:hover {
+                background: transparent;
+            }
             .fa, .iconfont {
                 margin-right: 0;
             }
         }
-        .fa, .iconfont {
-            font-size: 17px;
-            margin-right: 2px;
-            color: rgba(0, 0, 0, .45);
-            transition: $transitionAll;
-        }
     }
-    &[size='large'] {
-        padding: 0 15px;
-        font-size: 14px;
-        height: 32px;
-        &.icon {
-            &.only {
-                width: 32px;
-            }
-            .fa, .iconfont {
-                font-size: 16px;
+    // primary
+    &.primary {
+        color: #fff;
+        border: 0;
+        background: linear-gradient(-180deg, #0088DD 0%, #004488 100%);
+        background: linear-gradient(-180deg, #4499EE 0%, #3377BB 100%);
+        &:hover {
+            background-image: linear-gradient(-180deg, #3274B7 0%, #1F4A75 100%);
+            .fa,.iconfont {
+                color: #fff !important;
+                &:hover {
+                    color: #fff !important;
+                }
             }
         }
-    }
-    &[size='small'] {
-        padding: 0 7px;
-        font-size: 12px;
-        height: 22px;
         &.icon {
-            &.only {
-                width: 22px;
-            }
-            .fa, .iconfont {
-                font-size: 12px;
+            .fa,.iconfont {
+                color: #fff !important;
+                &:hover {
+                    color: #fff !important;
+                }
             }
         }
     }
 }
+
+// 按钮组
 .btn-group {
     display: inline-block;
     font-size: 0; // 消除两个相邻button的间隙
@@ -103,8 +102,13 @@
         border-left: 1px solid transparent;
         margin-right: 0;
         border-radius: 0;
+        background:#fff;
         &:hover {
             border-color: $backgroundColor;
+        }
+        &.primary {
+            background: linear-gradient(-180deg, #0088DD 0%, #004488 100%);
+            background: linear-gradient(-180deg, #4499EE 0%, #3377BB 100%);
         }
         &:first-child {
             border-left: 1px solid $borderColor;
@@ -129,45 +133,43 @@
         }
     }
 }
-
+// input样式
 .input {
     position: relative;
     display: inline-block;
     padding: 4px 7px;
     width: 200px;
-    height: 18px;
-    font-size: 12px;
+    height: 26px;
+    font-size: 14px;
     line-height: 1.5;
-    //color: rgba(0, 0, 0, .65);
-    color: rgba(0, 0, 0, 1);
-    border: 1px solid $borderColor;
+    background: #FFFFFF;
+    border: 1px solid #CCDDEE;
     border-radius: $borderRradius;
     transition: $transitionAll;
+    outline: 0;
     &[disabled]{
-        color: rgba(0, 0, 0, .25);
+        background: #F5F5F5;
+        border: 1px solid #E0E0E0;
+        color: #CCCCCC;
+        &:hover {
+            color: #CCCCCC;
+            background: #F5F5F5;
+            border: 1px solid #E0E0E0;
+            cursor: not-allowed;
+        }
     }
     &::-moz-placeholder {
-        color: rgba(0, 0, 0, .45);
+        color: #BBCCDD;
         opacity: 1
     }
     &:-ms-input-placeholder {
-        color: rgba(0, 0, 0, .45);
+        color: #BBCCDD;
     }
     &::-webkit-input-placeholder {
-        color: rgba(0, 0, 0, .45);
+        color: #BBCCDD;
     }
     &:focus, &:hover {
-        border-color: #49a9ee;
-    }
-    &:focus {
-        outline: 0;
-        box-shadow: 0 0 0 2px rgba(16, 142, 233, .2);
-    }
-    &[size='large'] {
-        height: 22px;
-    }
-    &[size='small'] {
-        height: 12px;
+        border: 1px solid #4499EE;
     }
 }
 textarea.input {

@@ -18,7 +18,7 @@
     font-size: 14px;
     border-radius: $borderRradius;
     user-select: none;
-    //transition: $transitionAll;
+    transition: $transitionAll;
     position: relative;
     background-image: linear-gradient(-180deg, #EEF7FF 0%, #E1F0FF 96%);
     border: 1px solid #CCDDEE;
@@ -63,9 +63,18 @@
             &:hover {
                 background: transparent;
                 //color:;
+                .fa,.iconfont {
+                    color: #285D92;
+                }
             }
             .fa, .iconfont {
                 margin-right: 0;
+                font-size: 24px;
+            }
+            &[size='small']{
+                .fa,.iconfont {
+                    font-size:12px;
+                }
             }
         }
     }
@@ -91,6 +100,23 @@
                     color: #fff !important;
                 }
             }
+        }
+    }
+    // small
+    &[size='small'] {
+        height: 24px;
+        font-size:12px;
+        .iconfont {
+            font-size:12px;
+        }
+    }
+    // 删除
+    &.delete {
+        color: #6688AA;
+        background: linear-gradient(-180deg, #EEF7FF 0%, #E1F0FF 96%);
+        &:hover {
+            color: #FF3333;
+            background: linear-gradient(-180deg, #FFEEEE 0%, #FFE1E1 96%);
         }
     }
 }
@@ -173,14 +199,20 @@
     &:focus, &:hover {
         border: 1px solid #4499EE;
     }
+    &[size='small'] {
+        height: 16px;
+        font-size: 12px;
+    }
 }
 textarea.input {
     height: auto;
     max-width: 100%;
 }
+// 带icon的input组
 .input-icon {
     display: inline-block;
     position: relative;
+    transition: $transitionAll;
     &[position='left'] {
         .input {
             padding-left: 30px;
@@ -212,6 +244,29 @@ textarea.input {
             color: $backgroundColor;
         }
     }
+    &.disabled {
+        background: #F5F5F5;
+        color: #CCCCCC;
+        border-color: #E0E0E0;;
+        .input {
+            background: #F5F5F5;
+            color: #CCCCCC;
+            border-color: #E0E0E0;;
+        }
+        &:hover {
+            background: #F5F5F5;
+            cursor: not-allowed;
+            color: #CCCCCC;
+            .fa,.iconfont {
+                color: #CCCCCC;
+            }
+            .input {
+                background: #F5F5F5;
+                cursor: not-allowed;
+                color: #CCCCCC;
+            }
+        }
+    }
 }
 
 .checkbox {
@@ -221,23 +276,23 @@ textarea.input {
         display: none;
     }
     input[type='checkbox'] + label {
-        border: 1px solid $borderColor;
-        padding: 8px;
+        border: 1px solid #CCDDEE;
+        padding: 6px;
         border-radius: 3px;
         display: inline-block;
         position: relative;
     }
     input[type='checkbox']:checked + label {
-        border: 1px solid $backgroundColor;
-        color: $backgroundColor;
+        background: #4499EE;
+        border-color: #4499EE;
     }
     input[type='checkbox'] + label:after {
         content: '\2714';
-        font-size: 14px;
+        font-size: 13px;
         position: absolute;
-        top: -2px;
-        left: 3px;
-        color: $backgroundColor;
+        top: -4px;
+        left: 1px;
+        color: #fff;
         opacity: 0;
         transition: $transitionAll;
     }

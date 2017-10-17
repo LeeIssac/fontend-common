@@ -60,7 +60,7 @@ export class Animations {
      */
     static routeAnimation: AnimationEntryMetadata = trigger('routerAnimation', [
         transition('* => *', [
-            query(':enter', style({ position: 'fixed', right: '0', left: '200px', opacity: 0 }), { optional: true }),
+            query(':enter', style({ position: 'fixed', right: '0', left: '180px', opacity: 0 }), { optional: true }),
             group([
                 // query(':leave', [
                 //     style({ opacity: 1 }),

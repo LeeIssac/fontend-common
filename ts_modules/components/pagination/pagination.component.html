@@ -1,8 +1,9 @@
 <div class="pager clearfix">
-    <ul class="clearfix">
-        <li class="text total">共{{totalcount}}条记录</li>
-        <li *ngFor="let item of list;let i = index;"
+    <span class="clearfix">
+        <!--<li class="text total">共{{totalcount}}条记录</li>-->
+        <span *ngFor="let item of list;let i = index;"
             [ngClass]="{cur: item.cur}"
-            (click)="pageTo(item)">{{item.text}}</li>
-    </ul>
+            (click)="pageTo(item)"
+        [class.]>{{item.text}}</span>
+    </span>
 </div>

@@ -2,41 +2,37 @@
 
 .pager {
     padding: 20px;
-    ul {
-        float: right;
-        li {
+    text-align: center;
+    span {
+        height: auto;
+        display: inline-block;
+        margin:  auto;
+        overflow: hidden;
+        span {
             float: left;
-            line-height: 32px;
-            padding: 0 15px;
+            width: auto;
+            height: 26px;
+            text-align: center;
+            margin-left: 5px;
+            line-height: 26px;
+            font-size: 14px;
+            padding: 0 10px;
             cursor: pointer;
             position: relative;
-            border: 1px solid $borderColor;
+            background: #EEF1F7;
+            color: #333;
             border-left: 0;
             transition: $transitionAll;
             &:first-child {
-                border-left: 1px solid $borderColor;
                 cursor: default;
-                border-top-left-radius: 6px;
-                border-bottom-left-radius: 6px;
-                &:hover {
-                    background: none;
-                    color: #333;
-                    border-color: $borderColor;
-                }
-            }
-            &:last-child {
-                border-top-right-radius: 6px;
-                border-bottom-right-radius: 6px;
+                margin-left: 0;
             }
             &.text {
                 padding: 0 20px;
             }
             &.cur, &:hover {
-                // background-color: $backgroundColor;
                 background-color: #108ee9;
                 color: #fff;
-                // border-color: $backgroundColor;
-                border-color: #108ee9;
             }
         }
     }

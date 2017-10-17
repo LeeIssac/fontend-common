@@ -278,7 +278,7 @@ textarea.input {
     input[type='checkbox'] + label {
         border: 1px solid #CCDDEE;
         padding: 6px;
-        border-radius: 3px;
+        //border-radius: 3px;
         display: inline-block;
         position: relative;
     }
@@ -298,6 +298,38 @@ textarea.input {
     }
     input[type='checkbox']:checked + label:after {
         opacity: 1;
+    }
+
+    // 禁用
+    &.disabled {
+        cursor: not-allowed;
+        input[type='checkbox'] + label {
+            border: 1px solid #E0E0E0;
+            padding: 6px;
+            //border-radius: 3px;
+            display: inline-block;
+            position: relative;
+            cursor: not-allowed;
+        }
+        input[type='checkbox']:checked + label {
+            background: #F5F5F5;
+            border-color: #E0E0E0;
+            cursor: not-allowed;
+        }
+        input[type='checkbox'] + label:after {
+            content: '\2714';
+            font-size: 13px;
+            position: absolute;
+            top: -4px;
+            left: 1px;
+            color: #CCCCCC;
+            opacity: 0;
+            transition: $transitionAll;
+        }
+        input[type='checkbox']:checked + label:after {
+            opacity: 1;
+        }
+
     }
 }
 

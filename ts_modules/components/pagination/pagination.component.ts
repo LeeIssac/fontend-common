@@ -69,11 +69,11 @@ export class PaginationComponent implements OnInit, OnChanges {
         let res = [],
             pageCount = Math.ceil(total / count),
 
-            start = Math.max(page - 2, 1),
-            end = Math.min(start + 4, pageCount),
+            start = Math.max(page - 4, 1),
+            end = Math.min(start + 8, pageCount),
             dis = end - start,
-            _end = Math.min(page + 2, pageCount),
-            _start = Math.max(_end - 4, 1),
+            _end = Math.min(page + 4, pageCount),
+            _start = Math.max(_end - 8, 1),
             _dis = _end - _start;
 
         if (_dis > dis) {
@@ -81,50 +81,26 @@ export class PaginationComponent implements OnInit, OnChanges {
             end = _end;
         }
 
-        // // 如果起始页不为1页，则显示首页
-        // if (start !== 1) {
-        //     res.push({
-        //         text: '首页',
-        //         target: 1,
-        //         disable: false,
-        //         cur: false
-        //     });
-        // }
-
-        // 如果当前页为1，则有上一页不可用
-        if (start === 1) {
+        // 如果起始页不为1页，则显示首页
+        if (start !== 1) {
             res.push({
-                text: '<',
+                text: '首页',
                 target: 1,
-                disable: true,
+                disable: false,
                 cur: false
             });
         }
 
         // 如果当前页不为1，则有上一页
-        if (start !== 1) {
+        if (page !== 1) {
             res.push({
-                text: '<',
+                text: '上一页',
                 target: page - 1,
                 disable: false,
                 cur: false
             });
         }
 
-        // 如果起始页不为1页，则显示首页
-        if (start !== 1) {
-            res.push({
-                text: '1',
-                target: 1,
-                disable: false,
-                cur: false
-            }, {
-                text: '...',
-                target: -1,
-                disable: true,
-                cur: false
-            });
-        }
         for (let i = start; i <= end; i++) {
             res.push({
                 text: '' + i,
@@ -134,51 +110,25 @@ export class PaginationComponent implements OnInit, OnChanges {
             });
         }
 
-        // 如果结尾页不为最后一页，则有最后一页
-        if (end !== pageCount) {
-            // res.pop();
-            res.push({
-                text: '...',
-                target: pageCount,
-                disable: false,
-                cur: false
-            },{
-                text: pageCount,
-                target: pageCount,
-                disable: false,
-                cur: false
-            });
-        }
-
-        // 如果当前页为最后一页，则有下一页不可用
-        if (page === pageCount) {
-            res.push({
-                text: '>',
-                target: page ,
-                disable: true,
-                cur: false
-            });
-        }
-
         // 如果当前页不为最后一页，则有下一页
         if (page !== pageCount) {
             res.push({
-                text: '>',
+                text: '下一页',
                 target: page + 1,
                 disable: false,
                 cur: false
             });
         }
 
-        // // 如果结尾页不为最后一页，则有最后一页
-        // if (end !== pageCount) {
-        //     res.push({
-        //         text: '尾页',
-        //         target: pageCount,
-        //         disable: false,
-        //         cur: false
-        //     });
-        // }
+        // 如果结尾页不为最后一页，则有最后一页
+        if (end !== pageCount) {
+            res.push({
+                text: '尾页',
+                target: pageCount,
+                disable: false,
+                cur: false
+            });
+        }
 
         return res;
     }

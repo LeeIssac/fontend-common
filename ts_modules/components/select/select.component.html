@@ -17,7 +17,7 @@
              (click)="searchClick($event)"
              *ngIf="search"
              [class.pos-top]="position==='top'"
-             [class.pos-bottom]="position==='bottom'">
+             [class.pos-bottom]="position==='bottom'" [@slideUpDwon]>
             <input type="text" class="input" #searchInput (keyup)="searchKeyup(searchInput.value)">
         </div>
         <div class="search-blank" *ngIf="search&&position==='bottom'"></div>

@@ -192,7 +192,8 @@ export class ModalService {
 
         // 设置根组件z-index层级
         modalComponentInstance['render'].setStyle(modalComponentInstance['containerRef']['element']['nativeElement'], 'z-index', this.zIndex);
-        this.zIndex++;
+        // z-index的顺序增加先取消 尽量不在模态框上再用模态框
+        // this.zIndex++;
 
         // 返回动态组件引用和根组件引用
         return [modalComponentInstance['contentRef'], modalComponentRef];

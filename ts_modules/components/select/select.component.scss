@@ -80,8 +80,9 @@
             left: 0;
             right: 0;
             z-index: 1;
+            height: auto;
             background: #fff;
-            margin: 6px 18px;
+            padding: 6px 18px;
             &.pos-top {
                 bottom: 0;
             }

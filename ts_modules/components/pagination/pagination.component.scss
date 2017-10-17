@@ -20,7 +20,7 @@
             cursor: pointer;
             position: relative;
             background: #EEF1F7;
-            color: #333;
+            color: #666;
             border-left: 0;
             transition: $transitionAll;
             &:first-child {
@@ -30,48 +30,24 @@
             &.text {
                 padding: 0 20px;
             }
-            &.cur, &:hover {
+            &.cur,  &.cur:hover {
+                color: #333;
+                background: none;
+            }
+
+            &:hover {
                 background-color: #108ee9;
                 color: #fff;
             }
+            &.disabled {
+                color: #ccc;
+                background-color: #F5F5F5;
+            }
+            &.ellipsis {
+                cursor: none;
+                color: #ccc;
+                background: none;
+            }
         }
     }
-    //ul {
-    //    float: right;
-    //    li {
-    //        float: left;
-    //        line-height: 32px;
-    //        padding: 0 15px;
-    //        cursor: pointer;
-    //        position: relative;
-    //        border: 1px solid $borderColor;
-    //        border-left: 0;
-    //        transition: $transitionAll;
-    //        &:first-child {
-    //            border-left: 1px solid $borderColor;
-    //            cursor: default;
-    //            border-top-left-radius: 6px;
-    //            border-bottom-left-radius: 6px;
-    //            &:hover {
-    //                background: none;
-    //                color: #333;
-    //                border-color: $borderColor;
-    //            }
-    //        }
-    //        &:last-child {
-    //            border-top-right-radius: 6px;
-    //            border-bottom-right-radius: 6px;
-    //        }
-    //        &.text {
-    //            padding: 0 20px;
-    //        }
-    //        &.cur, &:hover {
-    //            // background-color: $backgroundColor;
-    //            background-color: #108ee9;
-    //            color: #fff;
-    //            // border-color: $backgroundColor;
-    //            border-color: #108ee9;
-    //        }
-    //    }
-    //}
 }

@@ -139,10 +139,10 @@ export class PaginationComponent implements OnInit, OnChanges {
             // res.pop();
             res.push({
                 text: '...',
-                target: pageCount,
-                disable: false,
+                target: -1,
+                disable: true,
                 cur: false
-            },{
+            }, {
                 text: pageCount,
                 target: pageCount,
                 disable: false,

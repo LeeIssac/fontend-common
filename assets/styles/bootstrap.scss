@@ -62,6 +62,7 @@
             background: transparent;
             &:hover {
                 background: transparent;
+                //color:;
             }
             .fa, .iconfont {
                 margin-right: 0;
@@ -147,6 +148,7 @@
     border-radius: $borderRradius;
     transition: $transitionAll;
     outline: 0;
+    color: #333333;
     &[disabled]{
         background: #F5F5F5;
         border: 1px solid #E0E0E0;
@@ -182,6 +184,7 @@ textarea.input {
     &[position='left'] {
         .input {
             padding-left: 30px;
+            color:#333333;
         }
         .fa, .iconfont {
             left: 10px;
@@ -201,7 +204,7 @@ textarea.input {
         transform: translateY(-50%);
         z-index: 1;
         font-size: 14px;
-        color: rgba(0, 0, 0, 0.65);
+        color: #BBCCDD;
         transition: $transitionAll;
     }
     &:hover {

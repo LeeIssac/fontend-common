@@ -92,7 +92,7 @@ export class PaginationComponent implements OnInit, OnChanges {
         // }
 
         // 如果当前页为1，则有上一页不可用
-        if (start === 1) {
+        if (page === 1) {
             res.push({
                 text: '<',
                 target: 1,

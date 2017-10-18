@@ -1,5 +1,6 @@
 <div class="container" [class.disabled]="disabled">
     <div class="top clearfix"
+         [class.showDown]="showDown"
          (click)="toggleShowDown($event)">
         <span *ngFor="let op of option; let i = index;" class="item">
             <span [innerHTML]="(op&&op[label]) || '&nbsp;'" class="text-overflow"  [attr.title]="(op&&op[label]) || '&nbsp;'" ></span>

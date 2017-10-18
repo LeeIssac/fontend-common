@@ -26,6 +26,9 @@
         transition: $transitionAll;
         min-height: 20px;
         position: relative;
+        &.showDown {
+            border-color: #4499EE;
+        }
         .item {
             display: inline-block;
             max-width: 80%;

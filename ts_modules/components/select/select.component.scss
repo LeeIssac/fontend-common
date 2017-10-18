@@ -36,8 +36,7 @@
             color: rgba(0, 0, 0, 0.45);
         }
         &.showDown {
-            border-color: $backgroundColor;
-            color: $backgroundColor;
+            border-color: #4499EE;
             .iconfont {
                 transform: rotate(180deg);
             }
@@ -51,12 +50,12 @@
         }
         .arrow {
             position: absolute;
-            top: 5px;
+            top: 7px;
             right: 5px;
         }
         .clear {
             position: absolute;
-            top: 5px;
+            top: 7px;
             right: 20px;
         }
     }

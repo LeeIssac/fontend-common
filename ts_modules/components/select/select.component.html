@@ -6,8 +6,8 @@
               [attr.title]="(option&&option[label]) || placeholder || '&nbsp;'"
               [innerHTML]="(option&&option[label]) || placeholder || '&nbsp;'"
               [class.placeholder]="option && (option[label] === '' || option.name === '') || !option"></span>
-        <i class="iconfont arrow">&#xe62f;</i>
-        <i class="iconfont clear" *ngIf="clear&&showDown" (click)="clearClick($event)">&#xe62b;</i>
+        <i class="icon iconfont arrow icon-ico_arrow_down"></i>
+        <i class="icon iconfont clear icon-ico_tab_close" *ngIf="clear&&showDown" (click)="clearClick($event)"></i>
     </div>
     <div class="down"
          *ngIf="showDown"
